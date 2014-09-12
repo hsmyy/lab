@@ -13,12 +13,12 @@ angular.module('mean.multiply').controller('DescController', ['$scope', 'Global'
         $scope.phase = 0;
 
         $scope.quesSet = [{
-            'ques' : '大妈摔倒了你扶不扶',
-            'answer' : ''
+            'ques' : '大妈摔倒了你扶不扶'
         },{
-            'ques' : '大妈摔倒了你扶不扶',
-            'answer' : ''
+            'ques' : '大妈摔倒了你扶不扶'
         }];
+        $scope.tempAns = '';
+        $scope.answer = [];
 
         $scope.cur = 0;
 
@@ -27,7 +27,13 @@ angular.module('mean.multiply').controller('DescController', ['$scope', 'Global'
             $scope.cur = 0;
         };
 
-        $scope.next = function(){
+        $scope.next = function(ans){
+            $scope.answer.push({
+                'id' : $scope.cur,
+                'result' : $scope.tempAns
+            });
+            $scope.tempAns = '';
+
             if($scope.cur < $scope.quesSet.length - 1){
                 $scope.cur = $scope.cur + 1;
             }else{

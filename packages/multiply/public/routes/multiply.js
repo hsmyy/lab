@@ -8,6 +8,9 @@ angular.module('mean.multiply').config(['$stateProvider',
     }).state('描述实验', {
         url: '/description',
         templateUrl: 'multiply/views/desc.html'
+    }).state('眼神实验', {
+        url: '/face',
+        templateUrl: 'multiply/views/face.html'
     });
   }
 ]);

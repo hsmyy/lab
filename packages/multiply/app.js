@@ -31,6 +31,13 @@ Multiply.register(function(app, auth, database) {
         menu: 'main'
     });
 
+    Multiply.menus.add({
+        title: '眼神实验',
+        link: '眼神实验',
+        roles: ['authenticated'],
+        menu: 'main'
+    });
+
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback

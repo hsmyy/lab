@@ -13,12 +13,19 @@
                 问题{{cur + 1}} : {{quesSet[cur].ques}} ?
             </h4>
             <hr />
-            <textarea class="form-control" ng-model="quesSet[cur].answer"></textarea>
+            <textarea class="form-control" ng-model="$parent.tempAns"></textarea>
+            {{tempAns}}
             <button class="btn btn-default" ng-click="next()">确定</button>
         </div>
     </div>
     <div ng-if="phase == 2">
         恭喜您完成了任务！
+        <div>
+            答案：
+            <div ng-repeat="a in answer">
+                {{a.id}} : {{a.result}}
+            </div>
+        </div>
     </div>
 </div>
 
