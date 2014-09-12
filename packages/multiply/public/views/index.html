@@ -1,0 +1,28 @@
+<div class="" data-ng-controller="MultiplyController">
+    <h4>乘法</h4>
+    <hr/>
+    <div ng-if="phase == 0">
+
+        <hr/>
+
+        <button class="btn btn-primary" ng-click="start()">开始</button>
+    </div>
+    <div ng-if="phase == 1">
+        <div>
+            <h4>
+                问题{{cur + 1}} : {{quesSet[cur].first}} * {{quesSet[cur].second}} = ?
+            </h4>
+            <hr />
+            <div ng-repeat="ans in quesSet[cur].answer">
+                <button class="btn btn-default" ng-click="next()">{{ans}}</button>
+            </div>
+            <div class="alert-danger">
+                上题答案：错误
+            </div>
+        </div>
+    </div>
+    <div ng-if="phase == 2">
+        恭喜您完成了任务！
+    </div>
+</div>
+
