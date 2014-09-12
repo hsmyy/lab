@@ -2,7 +2,7 @@
     <h4>乘法</h4>
     <hr/>
     <div ng-if="phase == 0">
-
+        您的时间只有 {{time}}秒
         <hr/>
 
         <button class="btn btn-primary" ng-click="start()">开始</button>
@@ -10,19 +10,23 @@
     <div ng-if="phase == 1">
         <div>
             <h4>
-                问题{{cur + 1}} : {{quesSet[cur].first}} * {{quesSet[cur].second}} = ?
+                问题{{iter + 1}} : {{cur.first}} * {{cur.second}} = ?
             </h4>
             <hr />
-            <div ng-repeat="ans in quesSet[cur].answer">
-                <button class="btn btn-default" ng-click="next()">{{ans}}</button>
+            <div ng-repeat="ans in cur.answer">
+                <button class="btn btn-default" ng-click="next($index)">{{ans}}</button>
             </div>
-            <div class="alert-danger">
+            <div class="alert-danger" ng-if="last == 0">
                 上题答案：错误
+            </div>
+            <div class="alert-success" ng-if="last == 1">
+                上题答案：正确
             </div>
         </div>
     </div>
     <div ng-if="phase == 2">
         恭喜您完成了任务！
+        <div>结果：{{result}} / {{iter}}</div>
     </div>
 </div>
 
