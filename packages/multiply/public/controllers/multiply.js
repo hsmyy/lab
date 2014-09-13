@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$timeout', 'Global', 'Multiply',
-    function($scope, $timeout, Global, Multiply) {
+angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$timeout', 'Global', 'Multiply', 'Timer', 'CorrectCheck',
+    function($scope, $timeout, Global, Multiply, timer, correct) {
         $scope.global = Global;
         $scope.package = {
             name: 'multiply'
@@ -13,46 +13,93 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
         $scope.iter = 0;
         $scope.result = 0;
         $scope.last = -1;
+
+        var START_TEST_PHASE = 1;
+        var END_TEST_PHASE = 2;
+        var START_PHASE = 3;
+        var END_PHASE = 4;
+
+        //TODO create one timer
+        var timerPromise;
+        $scope.duration = 0;
+
         //parameter
-        $scope.time = 10;
+        $scope.time = 120;
         $scope.firstmin = 100;
         $scope.firstmax = 999;
         $scope.secondmin = 10;
         $scope.secondmax = 99;
+        $scope.testNumber = 3;
 
-        $scope.start = function(){
-            $scope.phase = 1;
-            $scope.cur = randMultiply();
-            $scope.iter = 0;
+        $scope.start = function(phase){
+            $scope.phase = phase;
+            $scope.iter = -1;
+            $scope.next();
+            if(phase === START_TEST_PHASE){
+                timer.tik();
+            }else if(phase === START_PHASE){
+                $scope.result = 0;
+                $timeout(finish,1000 * $scope.time);
+            }
+        };
 
-            $timeout(finish,1000 * $scope.time);
+        $scope.nextTest = function(ans){
+            $scope.result += $scope.last = judge($scope.cur, ans);
+            if($scope.iter + 1 < $scope.testNumber){
+                $scope.iter = $scope.iter + 1;
+                $scope.cur = randMultiply($scope.firstmin, $scope.firstmax, $scope.secondmin, $scope.secondmax);
+            }else{
+                finish();
+            }
         };
 
         $scope.next = function(ans){
-          $scope.result += judge(ans);
-          $scope.iter = $scope.iter + 1;
-          $scope.cur = randMultiply();
+            if(ans !== undefined){
+                $scope.result += $scope.last = judge($scope.cur, ans);
+                var correctUpdate = correct.update($scope.last);
+                changeDuration(correctUpdate);
+            }else{
+                if($scope.phase === START_PHASE){
+                    $timeout.cancel(timerPromise);
+                }
+            }
+            $scope.iter = $scope.iter + 1;
+            $scope.cur = randMultiply($scope.firstmin, $scope.firstmax, $scope.secondmin, $scope.secondmax);
+            if($scope.phase === START_PHASE){
+                timerPromise = $timeout($scope.next, $scope.duration);
+            }
         };
 
-        function finish(){
-            $scope.phase = 2;
+        function changeDuration(correctUpdate){
+            if(correctUpdate === 1){
+                $scope.duration = parseInt($scope.duration * 0.9);
+            }else if(correctUpdate === -1){
+                $scope.duration = parseInt($scope.duration * 1.1);
+            }
         }
 
-        function judge(ans){
-            var realVal = $scope.cur.first * $scope.cur.second;
+        function finish(){
+            if($scope.phase === START_TEST_PHASE){
+                $scope.duration = parseInt(timer.tok() / 3);
+                console.log($scope.duration);
+                $scope.phase = END_TEST_PHASE;
+            }else if($scope.phase === START_PHASE){
+                $scope.phase = END_PHASE;
+            }
+        }
 
-            if($scope.cur.answer[ans] === realVal){
-                $scope.last = 1;
+        function judge(cur, ans){
+            var realVal = cur.first * cur.second;
+            if(cur.answer[ans] === realVal){
                 return 1;
             }else{
-                $scope.last = 0;
                 return 0;
             }
         }
 
-        function randMultiply(){
-            var three = Math.floor(Math.random() * ($scope.firstmax - $scope.firstmin) + $scope.firstmin);
-            var two = Math.floor(Math.random() * ($scope.secondmax - $scope.secondmin) + $scope.secondmin);
+        function randMultiply(firstmin, firstmax, secondmin, secondmax){
+            var three = Math.floor(Math.random() * (firstmax - firstmin) + firstmin);
+            var two = Math.floor(Math.random() * (secondmax - secondmin) + secondmin);
             var answer = three * two;
             var digit = (parseInt(answer / 10) + 1) % 10;
             var fakeAnswer = parseInt((answer % 10) + (digit * 10) + (parseInt(answer / 100) * 100));
