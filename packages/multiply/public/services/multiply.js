@@ -62,9 +62,9 @@ Multiply.factory('CorrectCheck', [
                     return 0;
                 }
             }
-        }
+        };
     }
-])
+]);
 
 Multiply.constant('startTestPhase' , 1);
 Multiply.constant('finishTestPhase' , 2);
