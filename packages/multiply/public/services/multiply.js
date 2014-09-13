@@ -30,28 +30,27 @@ Multiply.factory('CorrectCheck', [
         var cur = 0;
         return {
             update : function(result){
+                console.log(cur + ',' + result);
                 if(cur === 0){
                     if(result === 0){
-                        cur -= 1;
+                        cur = -1;
+                    }else{
+                        cur = 1;
+                    }
+                }else if(cur > 0){
+                    if(result === 0){
+                        cur = -1;
                     }else{
                         cur += 1;
                     }
                 }else{
-                    if(cur > 0){
-                        if(result === 0){
-                            cur = -1;
-                        }else{
-                            cur += 1;
-                        }
+                    if(result === 0){
+                        cur -= 1;
                     }else{
-                        if(result === 0){
-                            cur -= -1;
-                        }else{
-                            cur = 1;
-                        }
+                        cur = 1;
                     }
                 }
-
+                console.log(cur);
                 if(cur >= 3){
                     cur = 0;
                     return 1;

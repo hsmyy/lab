@@ -34,17 +34,20 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
         $scope.start = function(phase){
             $scope.phase = phase;
             $scope.iter = -1;
-            $scope.next();
             if(phase === START_TEST_PHASE){
+                $scope.nextTest();
                 timer.tik();
             }else if(phase === START_PHASE){
+                $scope.next();
                 $scope.result = 0;
                 $timeout(finish,1000 * $scope.time);
             }
         };
 
         $scope.nextTest = function(ans){
-            $scope.result += $scope.last = judge($scope.cur, ans);
+            if(ans !== undefined){
+                $scope.result += $scope.last = judge($scope.cur, ans);
+            }
             if($scope.iter + 1 < $scope.testNumber){
                 $scope.iter = $scope.iter + 1;
                 $scope.cur = randMultiply($scope.firstmin, $scope.firstmax, $scope.secondmin, $scope.secondmax);
@@ -56,12 +59,16 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
         $scope.next = function(ans){
             if(ans !== undefined){
                 $scope.result += $scope.last = judge($scope.cur, ans);
-                var correctUpdate = correct.update($scope.last);
-                changeDuration(correctUpdate);
                 if($scope.phase === START_PHASE){
                     $timeout.cancel(timerPromise);
                 }
+            }else{
+                $scope.last = 0;
             }
+            var correctUpdate = correct.update($scope.last);
+            console.log(correctUpdate);
+            changeDuration(correctUpdate);
+
             $scope.iter = $scope.iter + 1;
             $scope.cur = randMultiply($scope.firstmin, $scope.firstmax, $scope.secondmin, $scope.secondmax);
             if($scope.phase === START_PHASE){
