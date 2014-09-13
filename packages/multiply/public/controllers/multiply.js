@@ -58,7 +58,6 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
                 $scope.result += $scope.last = judge($scope.cur, ans);
                 var correctUpdate = correct.update($scope.last);
                 changeDuration(correctUpdate);
-            }else{
                 if($scope.phase === START_PHASE){
                     $timeout.cancel(timerPromise);
                 }
@@ -98,10 +97,10 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
         }
 
         function randMultiply(firstmin, firstmax, secondmin, secondmax){
-            var three = Math.floor(Math.random() * (firstmax - firstmin) + firstmin);
-            var two = Math.floor(Math.random() * (secondmax - secondmin) + secondmin);
+            var three = parseInt(Math.random() * (firstmax - firstmin) + firstmin);
+            var two = parseInt(Math.random() * (secondmax - secondmin) + secondmin);
             var answer = three * two;
-            var digit = (parseInt(answer / 10) + 1) % 10;
+            var digit = (parseInt(answer / 10) + parseInt(1 + Math.random() * 8)) % 10;
             var fakeAnswer = parseInt((answer % 10) + (digit * 10) + (parseInt(answer / 100) * 100));
             var index = Math.random() > 0.5 ? 0 : 1;
             var answers = [];
