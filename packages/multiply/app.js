@@ -32,11 +32,27 @@ Multiply.register(function(app, auth, database) {
     });
 
     Multiply.menus.add({
-        title: '眼神实验',
-        link: '眼神实验',
+        title: '辩词实验',
+        link: '辩词实验',
         roles: ['authenticated'],
         menu: 'main'
     });
+
+    Multiply.menus.add({
+        title: '问卷调查',
+        link: '问卷调查',
+        roles: ['authenticated'],
+        menu: 'main'
+    });
+
+
+
+//    Multiply.menus.add({
+//        title: '眼神实验',
+//        link: '眼神实验',
+//        roles: ['authenticated'],
+//        menu: 'main'
+//    });
 
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above

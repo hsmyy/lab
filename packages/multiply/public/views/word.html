@@ -1,0 +1,41 @@
+<div class="" data-ng-controller="WordController">
+    <h4>词语辨析</h4>
+    <hr/>
+    <div ng-if="phase == 0">
+        <hr/>
+
+        <button class="btn btn-primary" ng-click="start()">开始</button>
+    </div>
+    <div ng-if="phase == 1">
+        <div>
+            <h4>
+                问题{{cur + 1}} :
+            </h4>
+            <hr />
+            <div class="well">
+                <div class="text-center" style="height: 200px;padding-top:100px;">
+                    <div ng-if="attention == 1">
+                        注意哦！
+                    </div>
+                    <div ng-if="attention == 2">
+                        {{quesSet[cur].ques}}
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-default" ng-click="next(true)">真词</button>
+                <button class="btn btn-default" ng-click="next(false)">假词</button>
+            </div>
+        </div>
+    </div>
+    <div ng-if="phase == 2">
+        恭喜您完成了任务！
+        <div>
+            答案：
+            <div ng-repeat="a in answer">
+                {{a.id}} : {{a.result}}
+            </div>
+        </div>
+    </div>
+</div>
+

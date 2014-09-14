@@ -11,6 +11,12 @@ angular.module('mean.multiply').config(['$stateProvider',
     }).state('眼神实验', {
         url: '/face',
         templateUrl: 'multiply/views/face.html'
+    }).state('辩词实验', {
+        url: '/word',
+        templateUrl: 'multiply/views/word.html'
+    }).state('问卷调查', {
+        url: '/form',
+        templateUrl: 'multiply/views/form.html'
     });
   }
 ]);
