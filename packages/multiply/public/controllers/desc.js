@@ -3,8 +3,8 @@
  */
 'use strict';
 
-angular.module('mean.multiply').controller('DescController', ['$scope', 'Global', 'Multiply',
-    function($scope, Global, Multiply) {
+angular.module('mean.multiply').controller('DescController', ['$scope', '$http', 'Global', 'Multiply',
+    function($scope, $http, Global, Multiply) {
         $scope.global = Global;
         $scope.package = {
             name: 'multiply'
@@ -12,11 +12,16 @@ angular.module('mean.multiply').controller('DescController', ['$scope', 'Global'
 
         $scope.phase = 0;
 
-        $scope.quesSet = [{
-            'ques' : '大妈摔倒了你扶不扶'
-        },{
-            'ques' : '大妈摔倒了你扶不扶'
-        }];
+        $http.get('multiply/descs').success(function(data){
+            $scope.quesSet = data;
+        }).error(function(data, status){
+            $scope.quesSet = [{
+                'ques' : '大妈摔倒了你扶不扶'
+            },{
+                'ques' : '大妈摔倒了你为啥不扶...'
+            }];
+        });
+
         $scope.tempAns = '';
         $scope.answer = [];
 

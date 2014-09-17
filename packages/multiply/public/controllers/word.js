@@ -3,8 +3,8 @@
  */
 'use strict';
 
-angular.module('mean.multiply').controller('WordController', ['$scope', '$timeout', 'Global', 'Multiply',
-    function($scope, $timeout, Global, Multiply) {
+angular.module('mean.multiply').controller('WordController', ['$scope', '$timeout', '$http', 'Global', 'Multiply',
+    function($scope, $timeout, $http, Global, Multiply) {
         $scope.global = Global;
         $scope.package = {
             name: 'multiply'
@@ -12,13 +12,18 @@ angular.module('mean.multiply').controller('WordController', ['$scope', '$timeou
 
         $scope.phase = 0;
 
-        $scope.quesSet = [{
-            'ques' : '大妈摔倒了你扶不扶',
-            'res' : true
-        },{
-            'ques' : '大妈摔倒了你扶不扶',
-            'res' : false
-        }];
+        $http.get('multiply/words').success(function(data){
+            $scope.quesSet = data;
+        }).error(function(data, status){
+            $scope.quesSet = [{
+                'ques' : '大妈摔倒了你扶不扶',
+                'res' : true
+            },{
+                'ques' : '大妈摔倒了你扶不扶',
+                'res' : false
+            }];
+        });
+
         $scope.answer = [];
 
         $scope.cur = 0;
