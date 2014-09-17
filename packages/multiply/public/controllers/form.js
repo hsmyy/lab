@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('mean.multiply').controller('FormController', ['$scope', 'Global', 'Multiply', 'vr.directives.slider',
+angular.module('mean.multiply').controller('FormController', ['$scope', 'Global', 'Multiply',
     function($scope, Global, Multiply) {
-        $scope.score = 30.0;
+        $scope.satisfy = 50.00;
     }]);

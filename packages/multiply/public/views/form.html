@@ -3,17 +3,12 @@
     <hr/>
     <form class="form-horizontal">
         <div class="form-group">
-            <label class="col-sm-4 text-right">满意度</label>
+            <label class="col-sm-4 text-right">满意度{{satisfy}}</label>
             <div class="col-sm-8">
-                <slider
-                        ng-model="score"
-                        floor="0.00"
-                        ceiling="100.00"
-                        step="0.01"
-                        precision="2"
-                </slider>
+                <input type="range" min="0" max="100" step="0.01" ng-model="satisfy" />
             </div>
         </div>
     </form>
+    {{hello}}
 </div>
 
