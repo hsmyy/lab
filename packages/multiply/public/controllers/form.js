@@ -5,5 +5,5 @@
 
 angular.module('mean.multiply').controller('FormController', ['$scope', 'Global', 'Multiply',
     function($scope, Global, Multiply) {
-        $scope.satisfy = 50.00;
+        $scope.satisfy = 10;
     }]);

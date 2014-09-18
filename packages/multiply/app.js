@@ -53,7 +53,7 @@ Multiply.register(function(app, auth, database) {
 //        roles: ['authenticated'],
 //        menu: 'main'
 //    });
-
+    Multiply.angularDependencies(['ui.slider']);
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback
