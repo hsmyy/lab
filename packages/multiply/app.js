@@ -45,6 +45,13 @@ Multiply.register(function(app, auth, database) {
         menu: 'main'
     });
 
+    Multiply.menus.add({
+        title: '计时器',
+        link: '计时器',
+        roles: ['authenticated'],
+        menu: 'main'
+    });
+
 
 
 //    Multiply.menus.add({

@@ -1,0 +1,12 @@
+<div ng-controller="TimerController">
+    <div class="row">
+        <div class="col-md-12">
+            <div ng-if="running">
+                请耐心等待{{seconds}}秒。
+            </div>
+            <div ng-if="!running">
+                结束！
+            </div>
+        </div>
+    </div>
+</div>

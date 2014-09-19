@@ -17,6 +17,9 @@ angular.module('mean.multiply').config(['$stateProvider',
     }).state('问卷调查', {
         url: '/form',
         templateUrl: 'multiply/views/form.html'
+    }).state('计时器',{
+        url: '/timer',
+        templateUrl: 'multiply/views/timer.html'
     });
   }
 ]);
