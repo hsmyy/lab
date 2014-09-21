@@ -1,0 +1,232 @@
+<div ng-controller="TestController">
+    <div ng-if="phase == 0">
+        <!-- start -->
+        <button class="btn btn-primary" ng-click="phase = 1">开始</button>
+    </div>
+    <div ng-if="phase == 1">
+        <!-- step 1 -->
+        <div>
+            请您拿起1号采集器，按照标准操作采集完毕后迅速将采集器放入冰盒。
+        </div>
+        <div>
+            按“开始”进入语词测试
+        </div>
+        <hr/>
+        <button class="btn btn-primary" ng-click="startWord()">开始</button>
+    </div>
+    <div ng-if="phase == 2">
+        <!-- word -->
+        <div>
+            <h4>
+                问题{{wordCur + 1}} :
+            </h4>
+            <hr />
+            <div class="well">
+                <div class="text-center" style="height: 200px;padding-top:100px;">
+                    <div ng-if="wordAttention == 1">
+                        注意哦！
+                    </div>
+                    <div ng-if="wordAttention == 2">
+                        {{wordSet[wordCur].ques}}
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-default" ng-click="next(true)">真词</button>
+                <button class="btn btn-default" ng-click="next(false)">假词</button>
+            </div>
+        </div>
+    </div>
+    <div ng-if="phase == 3">
+        <!-- step 2 -->
+        <div>
+            词语测试结束。
+        </div>
+        <div>
+            请您拿起2号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒。
+        </div>
+        <div>
+            完成后按“下一步”继续
+        </div>
+        <hr/>
+        <button class="btn btn-primary" ng-click="phase = 4">下一步</button>
+    </div>
+    <div ng-if="phase == 4">
+        <!-- form 1 -->
+        <div>
+            请阅读每一个陈述，拖动横条到一个位置表示你现在最恰当的感觉。数字越大表示描述越明显。填写完毕后按“下一步”继续
+        </div>
+        <hr/>
+            <form class="form-horizontal">
+                <div class="form-group" ng-repeat="ques in form1">
+                    <label class="col-sm-4 text-right">{{ques}}</label>
+                    <div class="col-sm-8">
+                        <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns1[$index]"></div>
+                    </div>
+                </div>
+            </form>
+        <hr/>
+        <button class="btn btn-primary" ng-clic="phase = 5">下一步</button>
+    </div>
+    <div ng-if="phase == 5">
+        <!-- multiply test -->
+        <div>
+            下面你将接受一个算术能力测试，请尽量准确迅速的完成每一道题，如果错误率太高这次实验的被试时间会作废，请务必认真作答！
+        </div>
+        <div>
+            按“开始”首先进入算术能力测试
+        </div>
+        <hr/>
+        <button class="btn btn-primary" ng-click="phase = 6">开始</button>
+    </div>
+    <div ng-if="phase == 6">
+        <!-- multiply test-->
+    </div>
+    <div ng-if="phase == 7">
+        <!-- multiply -->
+        <div>
+            按“开始”首先进入正式的算术能力测试
+        </div>
+    </div>
+    <div ng-if="phase == 8">
+        <!-- multiply-->
+    </div>
+    <div ng-if="phase == 9">
+        <!-- step 3 -->
+        <div>
+            算术能力测试结束。
+        </div>
+        <div>
+            请您拿起3号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒。
+        </div>
+        <div>
+            完成后按“下一步”继续
+        </div>
+        <hr/>
+        <button class="btn btn-primary">下一步</button>
+    </div>
+    <div ng-if="phase == 10">
+        <!-- form 2 -->
+        <div>
+            请阅读每一个陈述，拖动横条到一个位置表示你现在最恰当的感觉。数字越大表示描述越明显。填写完毕后按“下一步”继续
+        </div>
+        <hr/>
+        <form class="form-horizontal">
+            <div class="form-group" ng-repeat="ques in form1">
+                <label class="col-sm-4 text-right">{{ques}}</label>
+                <div class="col-sm-8">
+                    <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns12[$index]"></div>
+                </div>
+            </div>
+        </form>
+        <hr/>
+        <button class="btn btn-primary" ng-clic="phase = 5">下一步</button>
+    </div>
+    <div ng-if="phase == 11">
+        <!-- step 4 -->
+        <div>
+            所有测试任务都已完成，您完成得很好，现在您需要等待30分钟，在此期间您要描摹一些非常简单的简笔画，不需要全部完成，中间到一定时间耳机中会有声音提醒您采集3次唾液，每次采集完唾液后继续绘画。
+        </div>
+    </div>
+    <div ng-if="phase == 12">
+        <!-- step 5 -->
+        <div>
+            10分钟到，请您请您拿起4号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒，继续绘画。
+        </div>
+        <button class="btn btn-primary">
+            完成
+        </button>
+    </div>
+    <div ng-if="phase == 13">
+        <!-- step 6 -->
+        <div>
+            20分钟到，请您请您拿起5号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒，继续绘画。
+        </div>
+        <button class="btn btn-primary">
+            完成
+        </button>
+    </div>
+    <div ng-if="phase == 14">
+        <div>
+            30分钟到，请您请您拿起6号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒。
+        </div>
+        <div>
+            最后请您填写几张问卷
+        </div>
+        <hr/>
+        <button class="btn btn-primary" ng-click="phase = 15">填写问卷</button>
+    </div>
+    <div ng-if="phase == 15">
+        <!-- form 3 -->
+        <div>
+            请阅读每一个陈述，拖动横条到一个位置表示你现在最恰当的感觉。数字越大表示描述越明显。填写完毕后按“下一步”继续
+        </div>
+        <hr/>
+        <form class="form-horizontal">
+            <div class="form-group" ng-repeat="ques in form2">
+                <label class="col-sm-4 text-right">{{ques}}</label>
+                <div class="col-sm-8">
+                    <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns2[$index]"></div>
+                </div>
+            </div>
+        </form>
+        <hr/>
+        <button class="btn btn-primary" ng-clic="phase = 16">下一步</button>
+    </div>
+    <div ng-if="phase == 16">
+        <!-- form 4 -->
+        <div>
+            请阅读每一个陈述，拖动横条到一个位置表示你现在最恰当的感觉。数字越大表示描述越明显。填写完毕后按“下一步”继续
+        </div>
+        <hr/>
+        <form class="form-horizontal">
+            <div class="form-group" ng-repeat="ques in form3">
+                <label class="col-sm-4 text-right">满意度{{satisfy}}</label>
+                <div class="col-sm-8">
+                    <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns3[$index]"></div>
+                </div>
+            </div>
+        </form>
+        <hr/>
+        <button class="btn btn-primary" ng-clic="phase = 17">下一步</button>
+    </div>
+    <div ng-if="phase == 17">
+        <!-- form 5 -->
+        <div>
+            请阅读每一个陈述，拖动横条到一个位置表示你现在最恰当的感觉。数字越大表示描述越明显。填写完毕后按“下一步”继续
+        </div>
+        <hr/>
+        <form class="form-horizontal">
+            <div class="form-group" ng-repeat="ques in form4">
+                <label class="col-sm-4 text-right">满意度{{satisfy}}</label>
+                <div class="col-sm-8">
+                    <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns4[$index]"></div>
+                </div>
+            </div>
+        </form>
+        <hr/>
+        <button class="btn btn-primary" ng-clic="phase = 18">下一步</button>
+    </div>
+    <div ng-if="phase == 18">
+        <!-- form 6 -->
+        <div>
+            请阅读每一个陈述，拖动横条到一个位置表示你现在最恰当的感觉。数字越大表示描述越明显。填写完毕后按“下一步”继续
+        </div>
+        <hr/>
+        <form class="form-horizontal">
+            <div class="form-group" ng-repeat="ques in form5">
+                <label class="col-sm-4 text-right">满意度{{satisfy}}</label>
+                <div class="col-sm-8">
+                    <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns5[$index]"></div>
+                </div>
+            </div>
+        </form>
+        <hr/>
+        <button class="btn btn-primary" ng-clic="phase = 19">下一步</button>
+    </div>
+    <div ng-if="phase == 19">
+        <div>
+            试验结束
+        </div>
+    </div>
+</div>

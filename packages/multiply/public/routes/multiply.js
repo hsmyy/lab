@@ -20,6 +20,9 @@ angular.module('mean.multiply').config(['$stateProvider',
     }).state('计时器',{
         url: '/timer',
         templateUrl: 'multiply/views/timer.html'
+    }).state('实验',{
+        url: '/test',
+        templateUrl: 'multiply/views/test.html'
     });
   }
 ]);

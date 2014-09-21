@@ -1,3 +1,8 @@
 .multiply-example h1 {
   background-color: purple
 }
+
+/*style of input range for ie11*/
+::-ms-tooltip{
+    display: none;
+}
