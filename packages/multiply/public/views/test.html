@@ -1,75 +1,21 @@
 <div ng-controller="TestController" class="card well">
-    <div ng-if="phase == 0">
+    <div ng-show="!phase || phase == 'standby'">
         <!-- start -->
         <div class="body">
 
         </div>
         <div class="text-center">
-            <hr/>
-            <button class="btn btn-primary" ng-click="setPhase(10)">开始实验</button>
+            <hr>
+            <button class="btn btn-primary" ng-click="phase = 'word'">开始实验</button>
         </div>
     </div>
-    <div ng-if="phase == 10">
-        <!-- step 1 -->
-        <div class="body">
-            <div class="caption">
-                <h3>
-                    请您拿起1号采集器，按照标准操作采集完毕后迅速将采集器放入冰盒。
-                </h3>
-                <h3>
-                    按“开始”进入语词测试
-                </h3>
-            </div>
-        </div>
-        <div class="text-center">
-            <hr/>
-            <button class="btn btn-primary" ng-click="startWord()">开始</button>
-        </div>
+
+    <!-- First test: word test -->
+    <div ng-if="phase == 'word'">
+        <div ng-include="'multiply/views/word.html'"></div>
     </div>
-    <div ng-if="phase == 20">
-        <!-- word -->
-        <div class="body">
-            <h4>
-                问题{{wordCur + 1}} :
-            </h4>
-            <hr />
-            <div class="well">
-                <div class="text-center" style="height: 200px;padding-top:80px;">
-                    <div ng-if="wordAttention == 1">
-                        <h2>+</h2>
-                    </div>
-                    <div ng-if="wordAttention == 2">
-                        <h2>{{wordSet[wordCur].ques}}</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center">
-            <button class="btn btn-default" ng-click="wordAns(true)">真词</button>
-            <button class="btn btn-default" ng-click="wordAns(false)">假词</button>
-        </div>
-    </div>
-    <div ng-if="phase == 30">
-        <!-- step 2 -->
-        <div class="body">
-            <div class="caption">
-                <h3>
-                    词语测试结束。
-                </h3>
-                <h3>
-                    请您拿起2号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒。
-                </h3>
-                <h3>
-                    完成后按“下一步”继续
-                </h3>
-            </div>
-        </div>
-        <div class="text-center">
-            <hr/>
-            <button class="btn btn-primary" ng-click="setPhase(40)">下一步</button>
-        </div>
-    </div>
-    <div ng-if="phase == 40">
+
+    <div ng-if="phase == 'mood'">
         <!-- form 1 -->
         <div class="body">
             <h4>

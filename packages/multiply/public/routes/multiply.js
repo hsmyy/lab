@@ -15,14 +15,15 @@ angular.module('mean.multiply').config(['$stateProvider',
         url: '/word',
         templateUrl: 'multiply/views/word.html'
     }).state('问卷调查', {
-        url: '/form',
+        url: '/form/:formId',
         templateUrl: 'multiply/views/form.html'
     }).state('计时器',{
         url: '/timer',
         templateUrl: 'multiply/views/timer.html'
     }).state('实验',{
         url: '/test',
-        templateUrl: 'multiply/views/test.html'
+        templateUrl: 'multiply/views/test.html',
+        controller: 'TestController'
     });
   }
 ]);

@@ -1,41 +1,64 @@
-<div class="" data-ng-controller="WordController">
-    <h4>词语辨析</h4>
-    <hr/>
-    <div ng-if="phase == 0">
-        <hr/>
+<div ng-controller="WordController">
+    <div ng-if="step == 1">
+        <div class="body">
+            <div class="caption">
+                <h3>
+                    请您拿起1号采集器，按照标准操作采集完毕后迅速将采集器放入冰盒。
+                </h3>
 
-        <button class="btn btn-primary" ng-click="start()">开始</button>
+                <h3>
+                    按“开始”进入语词测试
+                </h3>
+            </div>
+        </div>
+        <div class="text-center">
+            <hr/>
+            <button class="btn btn-primary" ng-click="startWord()">开始</button>
+        </div>
     </div>
-    <div ng-if="phase == 1">
-        <div>
+
+    <!-- word -->
+    <div ng-if="step == 2">
+        <div class="body" ng-if="step == 2">
             <h4>
-                问题{{cur + 1}} :
+                问题{{wordCur + 1}} :
             </h4>
-            <hr />
+            <hr/>
             <div class="well">
-                <div class="text-center" style="height: 200px;padding-top:100px;">
-                    <div ng-if="attention == 1">
-                        注意哦！
+                <div class="text-center" style="height: 200px;padding-top:80px;">
+                    <div ng-if="wordAttention == 1">
+                        <h2>+</h2>
                     </div>
-                    <div ng-if="attention == 2">
-                        {{quesSet[cur].ques}}
+                    <div ng-if="wordAttention == 2">
+                        <h2>{{wordSet[wordCur].ques}}</h2>
                     </div>
                 </div>
             </div>
-            <div class="text-center">
-                <button class="btn btn-default" ng-click="next(true)">真词</button>
-                <button class="btn btn-default" ng-click="next(false)">假词</button>
-            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-default" ng-click="wordAns(true)">真词</button>
+            <button class="btn btn-default" ng-click="wordAns(false)">假词</button>
         </div>
     </div>
-    <div ng-if="phase == 2">
-        恭喜您完成了任务！
-        <div>
-            答案：
-            <div ng-repeat="a in answer">
-                {{a.id}} : {{a.result}}
+
+    <!-- step 2 -->
+    <div ng-if="step == 3">
+        <div class="body">
+            <div class="caption">
+                <h3>
+                    词语测试结束。
+                </h3>
+                <h3>
+                    请您拿起2号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒。
+                </h3>
+                <h3>
+                    完成后按“下一步”继续
+                </h3>
             </div>
+        </div>
+        <div class="text-center">
+            <hr/>
+            <button class="btn btn-primary" ng-click="saveAndNext()">下一步</button>
         </div>
     </div>
 </div>
-

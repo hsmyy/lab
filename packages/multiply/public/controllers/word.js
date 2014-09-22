@@ -3,56 +3,69 @@
  */
 'use strict';
 
-angular.module('mean.multiply').controller('WordController', ['$scope', '$timeout', '$http', 'Global', 'Multiply',
-    function($scope, $timeout, $http, Global, Multiply) {
-        $scope.global = Global;
-        $scope.package = {
-            name: 'multiply'
-        };
+angular.module('mean.multiply').controller('WordController', ['$scope', '$timeout', '$http', 'DataService', function ($scope, $timeout, $http, DataService) {
+    $scope.step = 1;
 
-        $scope.phase = 0;
+    $http.get('multiply/words').success(function (data) {
+        $scope.wordSet = data;
 
-        $http.get('multiply/words').success(function(data){
-            $scope.quesSet = data;
-        }).error(function(data, status){
-            $scope.quesSet = [{
-                'ques' : '大妈摔倒了你扶不扶',
-                'res' : true
-            },{
-                'ques' : '大妈摔倒了你扶不扶',
-                'res' : false
-            }];
+        // Only for test.
+        $scope.wordSet = [
+            {_id: "541fd8fa2d0725ff8438bad5",
+                ques: "帮肋",
+                res: false,
+                type: "help"}
+        ];
+    }).error(function (data, status) {
+        $scope.wordSet = [
+            {
+                'ques': '大妈摔倒了你扶不扶',
+                'res': true
+            },
+            {
+                'ques': '大妈摔倒了你扶不扶',
+                'res': false
+            }
+        ];
+    });
+
+    $scope.wordCur = -1;
+    $scope.wordAnswer = [];
+    $scope.wordAttention = 0;
+    $scope.startWord = function () {
+        $scope.step = 2;
+        $scope.wordCur = -1;
+        timerWord();
+        $timeout(function () {
+            $scope.phase = 30;
+        }, 5000);//TODO change as 120*1000 when in production
+    };
+
+    function timerWord() {
+        $scope.wordAttention = 1;
+        $scope.wordCur += 1;
+
+        if ($scope.wordCur === $scope.wordSet.length) {
+            $scope.step = 3;
+            return;
+        }
+
+        $timeout(function () {
+            $scope.wordAttention = 2;
+        }, 750);
+    }
+
+    $scope.wordAns = function (ans) {
+        $scope.wordAnswer.push({
+            'id': $scope.wordCur,
+            'result': 1 - (ans ^ $scope.wordSet[$scope.wordCur].res)
         });
 
-        $scope.answer = [];
+        timerWord();
+    };
 
-        $scope.cur = 0;
-
-        $scope.attention = 0;
-
-        $scope.start = function(){
-            $scope.phase = 1;
-            $scope.cur = -1;
-            timerNext();
-        };
-
-        $scope.next = function(ans){
-            $scope.answer.push({
-                'id' : $scope.cur,
-                'result' : 1 - (ans^$scope.quesSet[$scope.cur].res)
-            });
-            if($scope.cur < $scope.quesSet.length - 1){
-                timerNext();
-            }else{
-                $scope.phase = 2;
-            }
-        };
-
-        function timerNext(){
-            $scope.attention = 1;
-            $scope.cur = $scope.cur + 1;
-            $timeout(function(){
-                $scope.attention = 2;
-            },1500);
-        }
-    }]);
+    $scope.saveAndNext = function () {
+        DataService.setData('word-answer', angular.copy($scope.wordAnswer));
+        $scope.$emit('set-phase', 'mood');
+    };
+}]);
