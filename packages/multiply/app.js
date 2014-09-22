@@ -52,6 +52,13 @@ Multiply.register(function(app, auth, database) {
         menu: 'main'
     });
 
+    Multiply.menus.add({
+        title: '实验',
+        link: '实验',
+        roles: ['authenticated'],
+        menu: 'main'
+    });
+
 
 
 //    Multiply.menus.add({

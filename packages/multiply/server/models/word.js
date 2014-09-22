@@ -8,6 +8,10 @@ var WordSchema = new Schema({
         type: String,
         required: true
     },
+    type:{
+        type: String,
+        required: true
+    },
     res:{
         type: Boolean,
         required: true

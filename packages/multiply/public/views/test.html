@@ -1,7 +1,7 @@
 <div ng-controller="TestController">
     <div ng-if="phase == 0">
         <!-- start -->
-        <button class="btn btn-primary" ng-click="phase = 1">开始</button>
+        <button class="btn btn-primary" ng-click="setPhase(1)">开始</button>
     </div>
     <div ng-if="phase == 1">
         <!-- step 1 -->
@@ -24,7 +24,7 @@
             <div class="well">
                 <div class="text-center" style="height: 200px;padding-top:100px;">
                     <div ng-if="wordAttention == 1">
-                        注意哦！
+                        +
                     </div>
                     <div ng-if="wordAttention == 2">
                         {{wordSet[wordCur].ques}}
@@ -32,8 +32,8 @@
                 </div>
             </div>
             <div class="text-center">
-                <button class="btn btn-default" ng-click="next(true)">真词</button>
-                <button class="btn btn-default" ng-click="next(false)">假词</button>
+                <button class="btn btn-default" ng-click="wordAns(true)">真词</button>
+                <button class="btn btn-default" ng-click="wordAns(false)">假词</button>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
             完成后按“下一步”继续
         </div>
         <hr/>
-        <button class="btn btn-primary" ng-click="phase = 4">下一步</button>
+        <button class="btn btn-primary" ng-click="setPhase(4)">下一步</button>
     </div>
     <div ng-if="phase == 4">
         <!-- form 1 -->
@@ -59,14 +59,14 @@
         <hr/>
             <form class="form-horizontal">
                 <div class="form-group" ng-repeat="ques in form1">
-                    <label class="col-sm-4 text-right">{{ques}}</label>
+                    <label class="col-sm-4 text-right">{{ques.ques}}</label>
                     <div class="col-sm-8">
                         <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns1[$index]"></div>
                     </div>
                 </div>
             </form>
         <hr/>
-        <button class="btn btn-primary" ng-clic="phase = 5">下一步</button>
+        <button class="btn btn-primary" ng-click="setPhase(5)">下一步</button>
     </div>
     <div ng-if="phase == 5">
         <!-- multiply test -->
@@ -77,19 +77,54 @@
             按“开始”首先进入算术能力测试
         </div>
         <hr/>
-        <button class="btn btn-primary" ng-click="phase = 6">开始</button>
+        <button class="btn btn-primary" ng-click="startMulTest()">开始</button>
     </div>
     <div ng-if="phase == 6">
         <!-- multiply test-->
+        <div>
+            <h4>
+                测试问题{{mulIter + 1}} : {{mulCur.first}} * {{mulCur.second}} = ?
+            </h4>
+            <hr />
+            <div ng-repeat="ans in mulCur.answer">
+                <button class="btn btn-default" ng-click="nextMulTest($index)">{{ans}}</button>
+            </div>
+            <div class="alert-danger" ng-if="last == 0">
+                上题答案：错误
+            </div>
+            <div class="alert-success" ng-if="last == 1">
+                上题答案：正确
+            </div>
+        </div>
     </div>
     <div ng-if="phase == 7">
         <!-- multiply -->
         <div>
             按“开始”首先进入正式的算术能力测试
         </div>
+        <hr/>
+        <button class="btn btn-primary" ng-click="startMul()">开始</button>
     </div>
     <div ng-if="phase == 8">
         <!-- multiply-->
+        <div>
+            <h4>
+                问题{{mulIter + 1}} : {{mulCur.first}} * {{mulCur.second}} = ?
+            </h4>
+            <hr />
+            <div ng-repeat="ans in mulCur.answer">
+                <button class="btn btn-default" ng-click="nextMul($index)">{{ans}}</button>
+            </div>
+            <div class="alert-danger" ng-if="last == 0">
+                上题答案：错误
+            </div>
+            <div class="alert-success" ng-if="last == 1">
+                上题答案：正确
+            </div>
+            <div class="alert-info">
+                本题时限：{{duration}} ms.
+            </div>
+        </div>
     </div>
     <div ng-if="phase == 9">
         <!-- step 3 -->
@@ -103,7 +138,7 @@
             完成后按“下一步”继续
         </div>
         <hr/>
-        <button class="btn btn-primary">下一步</button>
+        <button class="btn btn-primary" ng-click="timerPhase()">下一步</button>
     </div>
     <div ng-if="phase == 10">
         <!-- form 2 -->
@@ -113,14 +148,14 @@
         <hr/>
         <form class="form-horizontal">
             <div class="form-group" ng-repeat="ques in form1">
-                <label class="col-sm-4 text-right">{{ques}}</label>
+                <label class="col-sm-4 text-right">{{ques.ques}}</label>
                 <div class="col-sm-8">
                     <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns12[$index]"></div>
                 </div>
             </div>
         </form>
         <hr/>
-        <button class="btn btn-primary" ng-clic="phase = 5">下一步</button>
+        <button class="btn btn-primary" ng-click="setPhase(11)">下一步</button>
     </div>
     <div ng-if="phase == 11">
         <!-- step 4 -->
@@ -133,18 +168,12 @@
         <div>
             10分钟到，请您请您拿起4号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒，继续绘画。
         </div>
-        <button class="btn btn-primary">
-            完成
-        </button>
     </div>
     <div ng-if="phase == 13">
         <!-- step 6 -->
         <div>
             20分钟到，请您请您拿起5号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒，继续绘画。
         </div>
-        <button class="btn btn-primary">
-            完成
-        </button>
     </div>
     <div ng-if="phase == 14">
         <div>
@@ -154,7 +183,7 @@
             最后请您填写几张问卷
         </div>
         <hr/>
-        <button class="btn btn-primary" ng-click="phase = 15">填写问卷</button>
+        <button class="btn btn-primary" ng-click="setPhase(15)">填写问卷</button>
     </div>
     <div ng-if="phase == 15">
         <!-- form 3 -->
@@ -164,14 +193,14 @@
         <hr/>
         <form class="form-horizontal">
             <div class="form-group" ng-repeat="ques in form2">
-                <label class="col-sm-4 text-right">{{ques}}</label>
+                <label class="col-sm-4 text-right">{{ques.ques}}</label>
                 <div class="col-sm-8">
                     <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns2[$index]"></div>
                 </div>
             </div>
         </form>
         <hr/>
-        <button class="btn btn-primary" ng-clic="phase = 16">下一步</button>
+        <button class="btn btn-primary" ng-click="setPhase(16)">下一步</button>
     </div>
     <div ng-if="phase == 16">
         <!-- form 4 -->
@@ -181,14 +210,14 @@
         <hr/>
         <form class="form-horizontal">
             <div class="form-group" ng-repeat="ques in form3">
-                <label class="col-sm-4 text-right">满意度{{satisfy}}</label>
+                <label class="col-sm-4 text-right">{{ques.ques}}</label>
                 <div class="col-sm-8">
                     <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns3[$index]"></div>
                 </div>
             </div>
         </form>
         <hr/>
-        <button class="btn btn-primary" ng-clic="phase = 17">下一步</button>
+        <button class="btn btn-primary" ng-click="setPhase(17)">下一步</button>
     </div>
     <div ng-if="phase == 17">
         <!-- form 5 -->
@@ -198,14 +227,14 @@
         <hr/>
         <form class="form-horizontal">
             <div class="form-group" ng-repeat="ques in form4">
-                <label class="col-sm-4 text-right">满意度{{satisfy}}</label>
+                <label class="col-sm-4 text-right">{{ques.ques}}</label>
                 <div class="col-sm-8">
                     <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns4[$index]"></div>
                 </div>
             </div>
         </form>
         <hr/>
-        <button class="btn btn-primary" ng-clic="phase = 18">下一步</button>
+        <button class="btn btn-primary" ng-click="setPhase(18)">下一步</button>
     </div>
     <div ng-if="phase == 18">
         <!-- form 6 -->
@@ -215,14 +244,14 @@
         <hr/>
         <form class="form-horizontal">
             <div class="form-group" ng-repeat="ques in form5">
-                <label class="col-sm-4 text-right">满意度{{satisfy}}</label>
+                <label class="col-sm-4 text-right">{{ques.ques}}</label>
                 <div class="col-sm-8">
                     <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns5[$index]"></div>
                 </div>
             </div>
         </form>
         <hr/>
-        <button class="btn btn-primary" ng-clic="phase = 19">下一步</button>
+        <button class="btn btn-primary" ng-click="setPhase(19)">下一步</button>
     </div>
     <div ng-if="phase == 19">
         <div>
