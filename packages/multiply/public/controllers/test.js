@@ -29,11 +29,11 @@ angular.module('mean.multiply').controller('TestController', ['$scope', '$http',
         $scope.wordAnswer = [];
         $scope.wordAttention = 0;
         $scope.startWord = function(){
-            $scope.phase = 2;
+            $scope.phase = 20;
             $scope.wordCur = -1;
             timerWord();
             $timeout(function(){
-                $scope.phase = 3;
+                $scope.phase = 30;
             },5000);//TODO change as 120*1000 when in production
         };
 
@@ -42,7 +42,7 @@ angular.module('mean.multiply').controller('TestController', ['$scope', '$http',
             $scope.wordCur += 1;
             $timeout(function(){
                 $scope.wordAttention = 2;
-            }, 100);
+            }, 750);
         }
 
         $scope.wordAns = function(ans){
@@ -69,7 +69,7 @@ angular.module('mean.multiply').controller('TestController', ['$scope', '$http',
         var timerPromise;
 
         $scope.startMulTest = function(){
-            $scope.phase = 6;
+            $scope.phase = 60;
             $scope.mulIter = -1;
             $scope.nextMulTest();
             timer.tik();
@@ -84,12 +84,12 @@ angular.module('mean.multiply').controller('TestController', ['$scope', '$http',
                 $scope.mulCur = mulQues.random($scope.firstmin, $scope.firstmax, $scope.secondmin, $scope.secondmax);
             }else{
                 $scope.duration = parseInt(timer.tok() / 3);
-                $scope.phase = 7;
+                $scope.phase = 70;
             }
         };
 
         $scope.startMul = function(){
-            $scope.phase = 8;
+            $scope.phase = 80;
             $scope.mulIter = -1;
             $scope.nextMul();
             $timeout(function(){
@@ -97,7 +97,7 @@ angular.module('mean.multiply').controller('TestController', ['$scope', '$http',
                     $timeout.cancel(timerPromise);
                 }
                 console.log($scope.result + ',' + $scope.mulIter);
-                $scope.phase = 9;
+                $scope.phase = 90;
             }, 1000 * $scope.time);
         };
 
@@ -138,18 +138,18 @@ angular.module('mean.multiply').controller('TestController', ['$scope', '$http',
 
         //timer
         $scope.timerPhase = function(){
-            $scope.phase = 10;
+            $scope.phase = 100;
 
             $timeout(function(){
-                $scope.phase = 12;
+                $scope.phase = 120;
             }, 10 * 1000);//TODO change as 10 minutes when in production
 
             $timeout(function(){
-                $scope.phase = 13;
+                $scope.phase = 130;
             }, 20 * 1000);//TODO change as 20 minutes when in production
 
             $timeout(function(){
-                $scope.phase = 14;
+                $scope.phase = 140;
             }, 30 * 1000);//TODO change as 30 minutes when in production
         };
         //timer end

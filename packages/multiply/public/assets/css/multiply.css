@@ -6,3 +6,34 @@
 ::-ms-tooltip{
     display: none;
 }
+
+.card{
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 500px;
+    max-width: 980px;
+    height: 630px;
+
+}
+
+.body{
+    height: 480px;
+    text-align: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.body .caption{
+    padding-top: 150px;
+}
+
+.ansBox{
+    margin-bottom: 30px;
+}
+
+.scroll{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 315px;
+    padding-top: 10px;
+}
