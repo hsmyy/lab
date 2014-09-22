@@ -11,10 +11,10 @@ angular.module('mean.multiply').controller('WordController', ['$scope', '$timeou
 
         // Only for test.
         $scope.wordSet = [
-            {_id: "541fd8fa2d0725ff8438bad5",
-                ques: "帮肋",
+            {_id: '541fd8fa2d0725ff8438bad5',
+                ques: '帮肋',
                 res: false,
-                type: "help"}
+                type: 'help'}
         ];
     }).error(function (data, status) {
         $scope.wordSet = [
@@ -66,6 +66,6 @@ angular.module('mean.multiply').controller('WordController', ['$scope', '$timeou
 
     $scope.saveAndNext = function () {
         DataService.setData('word-answer', angular.copy($scope.wordAnswer));
-        $scope.$emit('set-phase', 'mood');
+        $scope.$emit('set-phase', 'survey');
     };
 }]);

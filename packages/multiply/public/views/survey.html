@@ -1,0 +1,32 @@
+<div ng-controller="SurveyController">
+    <!-- form 1 -->
+    <div class="body">
+        <h4>
+            请阅读每一个陈述，拖动横条到一个位置表示你现在最恰当的感觉。
+        </h4>
+        <h4>
+            数字越大表示描述越明显。填写完毕后按“下一步”继续
+        </h4>
+        <hr/>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-6 text-right">描述项目</label>
+                <label class="col-sm-2 text-left">没有感觉</label>
+                <label class="col-sm-2 text-right">非常有感觉</label>
+            </div>
+            <hr/>
+            <div class="scroll">
+                <div class="form-group" ng-repeat="ques in form1">
+                    <label class="col-sm-6 text-right">{{ques.ques}}</label>
+                    <div class="col-sm-4">
+                        <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns1[$index]"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="text-center">
+        <hr/>
+        <button class="btn btn-primary" ng-click="saveAndNext()">下一步</button>
+    </div>
+</div>

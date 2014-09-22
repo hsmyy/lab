@@ -116,43 +116,5 @@ angular.module('mean.multiply').controller('TestController', ['$scope', '$http',
             }, 30 * 1000);//TODO change as 30 minutes when in production
         };
         //timer end
-
-        //form
-        $http.get('multiply/forms').success(function (data) {
-            $scope.form1 = [];
-            $scope.form2 = [];
-            $scope.form3 = [];
-            $scope.form4 = [];
-            $scope.form5 = [];
-
-            for (var i = 0, n = data.length; i < n; i += 1) {
-
-                if (data[i].type === 'pressure') {
-                    $scope.form1.push(data[i]);
-                    console.log(data[i].type);
-                } else if (data[i].type === 'student') {
-                    $scope.form2.push(data[i]);
-                    console.log(data[i].type);
-                } else if (data[i].type === 'lesshealth') {
-                    $scope.form3.push(data[i]);
-                    console.log(data[i].type);
-                } else if (data[i].type === 'helpother') {
-                    $scope.form4.push(data[i]);
-                    console.log(data[i].type);
-                } else if (data[i].type === 'helpotheract') {
-                    $scope.form5.push(data[i]);
-                    console.log(data[i].type);
-                }
-            }
-
-            $scope.formAns1 = new Array($scope.form1.length);
-            $scope.formAns12 = new Array($scope.form1.length);
-            $scope.formAns2 = new Array($scope.form2.length);
-            $scope.formAns3 = new Array($scope.form2.length);
-            $scope.formAns4 = new Array($scope.form2.length);
-            $scope.formAns5 = new Array($scope.form2.length);
-        }).error(function (data, status) {
-        });
-        //form end
     }
 ]);
