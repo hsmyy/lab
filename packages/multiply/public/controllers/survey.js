@@ -41,8 +41,7 @@ angular.module('mean.multiply').controller('SurveyController', ['$scope', '$http
     });
 
     $scope.saveAndNext = function() {
-        // TODO Go to next phase.
         DataService.setData('survey-answer', angular.copy($scope.formAns1));
-        $scope.$emit('set-phase', 'xxx');
+        $scope.$emit('set-phase', 'multiply');
     };
 }]);

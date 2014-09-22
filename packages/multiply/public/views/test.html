@@ -20,107 +20,11 @@
         <div ng-include="'multiply/views/survey.html'"></div>
     </div>
 
-    <div ng-if="phase == 50">
-        <!-- multiply test -->
-        <div class="body">
-            <div class="caption">
-                <h3>
-                    下面你将接受一个算术能力测试，请尽量准确迅速的完成每一道题
-                </h3>
-                <h3>
-                    如果错误率太高这次实验的被试时间会作废，请务必认真作答！
-                </h3>
-                <h3>
-                    按“开始”首先进入算术能力测试
-                </h3>
-            </div>
-        </div>
-        <div class="text-center">
-            <hr/>
-            <button class="btn btn-primary" ng-click="startMulTest()">开始</button>
-        </div>
+    <!-- Third test: mathmatical test -->
+    <div ng-if="phase == 'multiply'">
+        <div ng-include="'multiply/views/multiply.html'"></div>
     </div>
-    <div ng-if="phase == 60">
-        <!-- multiply test-->
-        <div class="body">
-            <h3>
-                测试问题{{mulIter + 1}} : {{mulCur.first}} * {{mulCur.second}} = ?
-            </h3>
-            <hr />
-            <div class="row caption">
-                <div class="col-sm-6 text-center ansBox" ng-repeat="ans in mulCur.answer" >
-                    <button class="btn btn-default" ng-click="nextMulTest($index)">{{ans}}</button>
-                </div>
-            </div>
-        </div>
-        <div class="text-center">
-            <div class="alert-danger" ng-if="last == 0">
-                上题答案：错误
-            </div>
-            <div class="alert-success" ng-if="last == 1">
-                上题答案：正确
-            </div>
-        </div>
-    </div>
-    <div ng-if="phase == 70">
-        <!-- multiply -->
-        <div class="body">
-            <div class="caption">
-            <h3>
-                按“开始”首先进入正式的算术能力测试
-            </h3>
-            </div>
-        </div>
-        <div class="text-center">
-            <hr/>
-            <button class="btn btn-primary" ng-click="startMul()">开始</button>
-        </div>
-    </div>
-    <div ng-if="phase == 80">
-        <!-- multiply-->
-        <div class="body">
-            <h4>
-                问题{{mulIter + 1}} : {{mulCur.first}} * {{mulCur.second}} = ?
-            </h4>
-            <hr />
-            <div class="row caption">
-                <div class="col-sm-6 text-center ansBox" ng-repeat="ans in mulCur.answer" >
-                    <button class="btn btn-default" ng-click="nextMul($index)">{{ans}}</button>
-                </div>
-            </div>
-        </div>
-        <div class="text-center">
-            <div class="alert-danger" ng-if="last == 0">
-                上题答案：错误
-            </div>
-            <div class="alert-success" ng-if="last == 1">
-                上题答案：正确
-            </div>
-            <div class="alert-info">
-                本题时限：{{duration}} ms.
-            </div>
-        </div>
-    </div>
-    <div ng-if="phase == 90">
-        <!-- step 3 -->
-        <div class="body">
-            <div class="caption">
-                <h3>
-                    算术能力测试结束。
-                </h3>
-                <h3>
-                    请您拿起3号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒。
-                </h3>
-                <h3>
-                    完成后按“下一步”继续
-                </h3>
-            </div>
-        </div>
-        <div class="text-center">
-            <hr/>
-            <button class="btn btn-primary" ng-click="timerPhase()">下一步</button>
-        </div>
-    </div>
+
     <div ng-if="phase == 100">
         <!-- form 2 -->
         <div class="body">
