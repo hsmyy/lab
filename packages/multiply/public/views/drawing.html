@@ -1,0 +1,85 @@
+<!-- step 4 -->
+<div ng-if="step == 1">
+    <div class="body">
+        <div class="caption">
+            <h3>
+                所有测试任务都已完成，您完成得很好，
+            </h3>
+
+            <h3>
+                现在您需要等待30分钟，在此期间您要描摹一些非常简单的简笔画，不需要全部完成，
+            </h3>
+
+            <h3>
+                中间到一定时间耳机中会有声音提醒您采集3次唾液，每次采集完唾液后继续绘画。
+            </h3>
+        </div>
+    </div>
+    <div class="text-center">
+    </div>
+</div>
+
+<div ng-if="step == 2">
+    <div class="body">
+        <div class="caption">
+            <h3>
+                10分钟到，
+            </h3>
+
+            <h3>
+                请您请您拿起4号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒，
+            </h3>
+
+            <h3>
+                继续绘画。
+            </h3>
+        </div>
+    </div>
+    <div class="text-center">
+
+    </div>
+</div>
+
+<div ng-if="step == 3">
+    <!-- step 6 -->
+    <div class="body">
+        <div class="caption">
+            <h3>
+                20分钟到，
+            </h3>
+
+            <h3>
+                请您请您拿起5号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒，
+            </h3>
+
+            <h3>
+                继续绘画。
+            </h3>
+        </div>
+    </div>
+    <div class="text-center">
+
+    </div>
+</div>
+
+<div ng-if="step == 4">
+    <div class="body">
+        <div class="caption">
+            <h3>
+                30分钟到，
+            </h3>
+
+            <h3>
+                请您请您拿起6号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒。
+            </h3>
+
+            <h3>
+                最后请您填写几张问卷
+            </h3>
+        </div>
+    </div>
+    <div class="text-center">
+        <hr/>
+        <button class="btn btn-primary" ng-click="saveAndNext()">填写问卷</button>
+    </div>
+</div>

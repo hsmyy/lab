@@ -2,19 +2,20 @@
 
 angular.module('mean.multiply').controller('TimerController', ['$scope', '$timeout', '$http', 'Global', 'Multiply',
     function($scope, $timeout, $http, Global, Multiply) {
-        $scope.seconds = 10;
+        $scope.timerPhase = function () {
+            $scope.phase = 100;
 
-        $scope.running =true;
+            $timeout(function () {
+                $scope.phase = 120;
+            }, 10 * 1000);//TODO change as 10 minutes when in production
 
-        $scope.tik = function(){
-            $scope.seconds -= 1;
-            if($scope.seconds < 0) {
-                $scope.running = false;
-            }else{
-                $timeout($scope.tik, 1000);
-            }
+            $timeout(function () {
+                $scope.phase = 130;
+            }, 20 * 1000);//TODO change as 20 minutes when in production
+
+            $timeout(function () {
+                $scope.phase = 140;
+            }, 30 * 1000);//TODO change as 30 minutes when in production
         };
-
-        $scope.tik();
     }
 ]);

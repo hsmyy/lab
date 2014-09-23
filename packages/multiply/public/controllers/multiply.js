@@ -18,7 +18,7 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
         var timerPromise;
 
         $scope.startMulTest = function () {
-            $scope.step ++;
+            $scope.step += 1;
             $scope.mulIter = -1;
             $scope.nextMulTest();
             timer.tik();
@@ -33,12 +33,12 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
                 $scope.mulCur = mulQues.random($scope.firstmin, $scope.firstmax, $scope.secondmin, $scope.secondmax);
             } else {
                 $scope.duration = parseInt(timer.tok() / 3);
-                $scope.step ++;
+                $scope.step += 1;
             }
         };
 
         $scope.startMul = function () {
-            $scope.step ++;
+            $scope.step += 1;
             $scope.mulIter = -1;
             $scope.nextMul();
             $timeout(function () {
@@ -46,7 +46,7 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
                     $timeout.cancel(timerPromise);
                 }
                 console.log($scope.result + ',' + $scope.mulIter);
-                $scope.step ++;
+                $scope.step += 1;
             }, 1000 * $scope.time);
         };
 
