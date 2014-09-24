@@ -1,5 +1,6 @@
 <div ng-controller="TestController" class="card well">
-    <div ng-show="!phase || phase == 'standby'">
+    Current phase: {{phase || 'No Phase'}}
+    <div ng-if="!phase || phase == 'standby'">
         <div ng-include="'multiply/views/opening.html'"></div>
     </div>
 

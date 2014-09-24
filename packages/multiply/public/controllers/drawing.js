@@ -6,10 +6,12 @@
 angular.module('mean.multiply').controller('DrawingController', ['$scope', '$timeout', '$http', 'DataService', function ($scope, $timeout, $http, DataService) {
     $scope.step = 1;
 
-    // TODO Start a timer.
-    // 1. Count for 10 min and go to step 2;
-    // 2. Count for 10 min and go to step 3;
-    // 3. Count for 10 min and show the next button.
+    $scope.onTimeUp = function() {
+        alert('时间到，请点击关闭本对话框并按接下来的提示操作。');
+        $scope.$apply(function() {
+            $scope.step += 1;
+        });
+    };
 
     $scope.saveAndNext = function () {
         $scope.$emit('set-phase', 'survey-student');

@@ -87,6 +87,6 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
         $scope.saveAndNext = function () {
             // TODO Go to next phase.
             DataService.setData('multiply-answer', angular.copy($scope.formAns1));
-            $scope.$emit('set-phase', 'timer');
+            $scope.$emit('set-phase', 'survey2');
         };
     }]);

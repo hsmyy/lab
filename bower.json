@@ -11,6 +11,7 @@
     "bootstrap": "3.1.1",
     "angular-bootstrap": "0.11.0",
     "angular-ui-router": "#master",
-    "angular-ui-slider": "latest"
+    "angular-ui-slider": "latest",
+    "angular-timer": "~1.1.7"
   }
 }
