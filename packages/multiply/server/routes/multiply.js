@@ -3,6 +3,7 @@
 var WordService = require('../service/word');
 var DescService = require('../service/desc');
 var FormService = require('../service/form');
+var AnsService = require('../service/ans');
 
 // The Package is past automatically as first parameter
 module.exports = function(Multiply, app, auth, database) {
@@ -60,6 +61,18 @@ module.exports = function(Multiply, app, auth, database) {
               });
           }else{
               res.jsonp(forms);
+          }
+      });
+  });
+
+  app.post('/multiply/ans', function(req, res, next){
+      AnsService.save(req.body, function(err){
+          if(err){
+              res.render('error',{
+                  status : 500
+              });
+          }else{
+              res.jsonp({'res':'ok'});
           }
       });
   });

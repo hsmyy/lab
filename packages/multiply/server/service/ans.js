@@ -6,7 +6,7 @@
 var Ans = require('../models/ans').Ans;
 
 exports.save = function(ans, callback){
-    Ans.create(ans,function(err){
+    Ans.update({userid : ans.userid}, ans, {upsert : true},function(err){
         callback(err);
     });
 };
