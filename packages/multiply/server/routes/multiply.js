@@ -53,8 +53,8 @@ module.exports = function(Multiply, app, auth, database) {
       });
   });
 
-  app.get('/multiply/forms', function(req, res, next){
-      FormService.get(function(err, forms){
+  app.get('/multiply/forms/:formType', function(req, res, next){
+      FormService.get(req.param('formType'),function(err, forms){
           if(err){
               res.render('error',{
                   status : 500

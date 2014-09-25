@@ -5,7 +5,7 @@
 
 angular.module('mean.multiply').controller('SurveyController', ['$scope', '$http', 'DataService', function ($scope, $http, DataService) {
     // Survey Name: survey1, survey2, survey-student, survey-lesshealth, survey5.
-    console.log('Survey Name: ' + $scope.surveyName);
+    console.log('Survey Name: ' + $scope.surveyName[0]);
 
     $scope.pageSize = 5;
     $scope.currentPage = 0;
@@ -13,7 +13,7 @@ angular.module('mean.multiply').controller('SurveyController', ['$scope', '$http
 
     // TODO Load different questions for different survey name.
 
-    $http.get('multiply/forms').success(function (data) {
+    $http.get('multiply/forms/' + $scope.surveyName[0]).success(function (data) {
         $scope.questions = data;
         $scope.answers = new Array($scope.questions.length);
         $scope.pageNumber = Math.floor(($scope.questions.length - 1) / $scope.pageSize) + 1;
@@ -33,22 +33,22 @@ angular.module('mean.multiply').controller('SurveyController', ['$scope', '$http
     };
 
     $scope.saveAndNext = function() {
-        if($scope.surveyName === 'survey1') {
-            DataService.setData('survey1-answer', angular.copy($scope.answers));
-            $scope.$emit('set-phase', 'multiply');
-        } else if($scope.surveyName === 'survey2') {
-            DataService.setData('survey2-answer', angular.copy($scope.answers));
-            $scope.$emit('set-phase', 'drawing');
-        } else if($scope.surveyName === 'survey-student') {
+        if($scope.surveyName[1] === 'survey1-answer') {
+                DataService.setData('survey1-answer', angular.copy($scope.answers));
+                $scope.$emit('set-phase', 'multiply');
+        }else if($scope.surveyName[1] === 'survey2-answer'){
+                DataService.setData('survey2-answer', angular.copy($scope.answers));
+                $scope.$emit('set-phase', 'drawing');
+        } else if($scope.surveyName[1] === 'student') {
             DataService.setData('survey-student-answer', angular.copy($scope.answers));
             $scope.$emit('set-phase', 'survey-lesshealth');
-        } else if($scope.surveyName === 'survey-lesshealth') {
+        } else if($scope.surveyName[1] === 'lesshealth') {
             DataService.setData('survey-lesshealth-answer', angular.copy($scope.answers));
             $scope.$emit('set-phase', 'survey5');
-        } else if($scope.surveyName === 'survey5') {
+        } else if($scope.surveyName[1] === 'helpother') {
             DataService.setData('survey5-answer', angular.copy($scope.answers));
             $scope.$emit('set-phase', 'survey6');
-        } else if($scope.surveyName === 'survey6') {
+        } else if($scope.surveyName[1] === 'helpotheract') {
             DataService.setData('survey6-answer', angular.copy($scope.answers));
             $scope.$emit('set-phase', 'closing');
         }

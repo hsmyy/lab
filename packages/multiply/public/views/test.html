@@ -15,7 +15,7 @@
 
     <!-- Second test: survey -->
     <div ng-if="phase == 'survey'">
-        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName='survey1'"></div>
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['pressure','survey1-answer']"></div>
     </div>
 
     <!-- Third test: mathematical test -->
@@ -24,7 +24,7 @@
     </div>
 
     <div ng-if="phase == 'survey2'">
-        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName='survey2'"></div>
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['pressure','survey2-answer']"></div>
     </div>
 
     <div ng-if="phase == 'drawing'">
@@ -32,19 +32,19 @@
     </div>
 
     <div ng-if="phase == 'survey-student'">
-        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName='survey-student'"></div>
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['student', 'student']"></div>
     </div>
 
     <div ng-if="phase == 'survey-lesshealth'">
-        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName='survey-lesshealth'"></div>
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['lesshealth', 'lesshealth']"></div>
     </div>
 
     <div ng-if="phase == 'survey5'">
-        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName='survey5'"></div>
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['helpother', 'helpother']"></div>
     </div>
 
     <div ng-if="phase == 'survey6'">
-        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName='survey6'"></div>
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['helpotheract', 'helpotheract']"></div>
     </div>
 
     <div ng-if="phase == 'closing'">

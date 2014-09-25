@@ -5,8 +5,8 @@
 
 var Form = require('../models/form').Form;
 
-exports.get = function(callback){
-    Form.find().exec(function(err, forms){
+exports.get = function(type, callback){
+    Form.find({type : type}).exec(function(err, forms){
         callback(err, forms);
     });
 };
