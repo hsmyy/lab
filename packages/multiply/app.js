@@ -4,7 +4,6 @@
  * Defining the Package
  */
 var Module = require('meanio').Module;
-
 var Multiply = new Module('multiply');
 
 /*
@@ -89,6 +88,7 @@ Multiply.register(function (app, auth, database) {
     });
      */
     Multiply.aggregateAsset('css', 'multiply.css');
+
 
     return Multiply;
 });

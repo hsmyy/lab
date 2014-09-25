@@ -1,5 +1,9 @@
 <div ng-controller="TestController" class="card well">
     Current phase: {{phase || 'No Phase'}}
+    <div id="test">
+
+    </div>
+    <EMBED name="mp3" src="/multiply/assets/mp3/beng.mp3" hidden="true" type="audio/mpeg" loop="0" autostart="false">
     <div ng-if="!phase || phase == 'standby'">
         <div ng-include="'multiply/views/opening.html'"></div>
     </div>

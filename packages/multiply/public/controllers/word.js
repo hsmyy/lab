@@ -10,12 +10,12 @@ angular.module('mean.multiply').controller('WordController', ['$scope', '$timeou
         $scope.wordSet = data;
 
         // Only for test.
-        $scope.wordSet = [
+        /*$scope.wordSet = [
             {_id: '541fd8fa2d0725ff8438bad5',
                 ques: '帮肋',
                 res: false,
                 type: 'help'}
-        ];
+        ];*/
     }).error(function (data, status) {
         $scope.wordSet = [
             {
@@ -37,7 +37,7 @@ angular.module('mean.multiply').controller('WordController', ['$scope', '$timeou
         $scope.wordCur = -1;
         timerWord();
         $timeout(function () {
-            $scope.phase = 30;
+            $scope.$emit('set-phase', 'survey');
         }, 5000);//TODO change as 120*1000 when in production
     };
 
