@@ -16,17 +16,21 @@
             </div>
             <hr/>
             <div class="scroll">
-                <div class="form-group" ng-repeat="ques in form1">
-                    <label class="col-sm-6 text-right">{{ques.ques}}</label>
+                <div class="form-group" ng-repeat="ques in questions" ng-show="$index >= pageSize * currentPage && $index < (pageSize * currentPage + pageSize)">
+                    <label class="col-sm-6 text-right">{{$index+1}}. {{ques.ques}}</label>
                     <div class="col-sm-4">
-                        <div ui-slider="" min="0" max="10000" step="1" ng-model="formAns1[$index]"></div>
+                        <div ui-slider="" min="0" max="10000" step="1" ng-model="answers[$index]"></div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
     <div class="text-center">
+        {{$scope.questions.length}}
+        <span class="ng-cloak" ng-show="pageNumber">{{currentPage + 1}}/{{pageNumber}}</span>
         <hr/>
-        <button class="btn btn-primary" ng-click="saveAndNext()">下一步</button>
+        <button class="btn btn-default" ng-click="prevPage()" ng-disabled="currentPage == 0">上一页</button>
+        <button class="btn btn-default" ng-click="nextPage()" ng-hide="pageSize * currentPage + pageSize >= questions.length">下一页</button>
+        <button class="btn btn-primary" ng-click="saveAndNext()" ng-show="pageSize * currentPage + pageSize >= questions.length">提交</button>
     </div>
 </div>
