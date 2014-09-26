@@ -52,7 +52,7 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
 
         $scope.nextMul = function (ans) {
             if (ans !== undefined) {
-                $scope.result += $scope.last = judge($scope.cur, ans);
+                $scope.result += $scope.last = judge($scope.mulCur, ans);
                 if (timerPromise !== undefined) {
                     $timeout.cancel(timerPromise);
                 }
@@ -86,7 +86,10 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
 
         $scope.saveAndNext = function () {
             // TODO Go to next phase.
-            DataService.setData('multiply-answer', angular.copy($scope.formAns1));
+            DataService.setData('multiply-answer', angular.copy({
+                'result' : $scope.result,
+                'num' : $scope.mulIter
+            }));
             $scope.$emit('set-phase', 'survey2');
         };
     }]);

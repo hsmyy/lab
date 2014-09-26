@@ -11,29 +11,41 @@ var AnsSchema = new Schema({
         type : String,
         required : true
     },
-    survery1 :{
+    'survey1-answer' :{
         type : [Number],
         required : true
     },
-    survery2 : {
+    'survey2-answer' : {
         type : [Number],
         required : true
     },
-    surveryStu : {
+    'survey-student-answer' : {
         type : [Number],
         required : true
     },
-    surveryLessHealth : {
+    'survey-lesshealth-answer' : {
         type : [Number],
         required : true
     },
-    surveryHelp : {
+    'survey5-answer' : {
         type : [Number],
         required : true
     },
-    surveryHelpAct : {
+    'survey6-answer' : {
         type : [Number],
         required : true
+    },
+    'word-answer' : {
+        type : [{
+            id : Number,
+            result : Number
+        }]
+    },
+    'multiply-answer' : {
+        type : {
+            'result' : Number,
+            'num' : Number
+        }
     }
 });
 

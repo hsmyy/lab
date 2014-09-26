@@ -5,7 +5,7 @@
 
 var Multiply = angular.module('mean.multiply');
 
-Multiply.factory('DataService', [function () {
+Multiply.factory('DataService',[ '$http', function ($http) {
     var data = {};
 
     function init() {
@@ -16,14 +16,25 @@ Multiply.factory('DataService', [function () {
         data[key] = value;
     }
 
-    function getData(key, value) {
-        data[key] = value;
+    function getData(key) {
+        return data[key];
+    }
+
+    function send(id){
+        data.userid = id;
+        $http.post('multiply/ans',{data : data}).success(function(){
+
+        }).error(function(err){
+            console.log(data);
+        });
+        return data;
     }
 
     return {
         init: init,
         reset: init,
         setData: setData,
-        getData: getData
+        getData: getData,
+        send: send
     };
 }]);

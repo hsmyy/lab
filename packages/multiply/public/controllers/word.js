@@ -3,10 +3,17 @@
  */
 'use strict';
 
-angular.module('mean.multiply').controller('WordController', ['$scope', '$timeout', '$http', 'DataService', function ($scope, $timeout, $http, DataService) {
+angular.module('mean.multiply').controller('WordController', ['$scope', '$timeout', '$http', 'DataService', 'Global', function ($scope, $timeout, $http, DataService) {
     $scope.step = 1;
 
-    $http.get('multiply/words').success(function (data) {
+    var type;
+    if($scope.global.user.roles.indexOf('A1') !== -1){
+        type = 'help';
+    }else{
+        type = 'normal';
+    }
+
+    $http.get('multiply/words/' + type).success(function (data) {
         $scope.wordSet = data;
 
         // Only for test.
@@ -37,7 +44,7 @@ angular.module('mean.multiply').controller('WordController', ['$scope', '$timeou
         $scope.wordCur = -1;
         timerWord();
         $timeout(function () {
-            $scope.$emit('set-phase', 'survey');
+            $scope.step = 3;
         }, 5000);//TODO change as 120*1000 when in production
     };
 

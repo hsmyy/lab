@@ -1,5 +1,5 @@
 <div ng-controller="TestController" class="card well">
-    Current phase: {{phase || 'No Phase'}}
+
     <div id="test">
 
     </div>
@@ -11,6 +11,10 @@
     <!-- First test: word test -->
     <div ng-if="phase == 'word'">
         <div ng-include="'multiply/views/word.html'"></div>
+    </div>
+
+    <div ng-if="phase == 'desc'">
+        <div ng-include="'multiply/views/desc.html'"></div>
     </div>
 
     <!-- Second test: survey -->

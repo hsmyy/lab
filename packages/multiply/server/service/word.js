@@ -2,8 +2,8 @@
 
 var Word = require('../models/word.js').Word;
 
-exports.get = function(callback){
-    Word.find().exec(function(err, words){
+exports.get = function(type, callback){
+    Word.find({type: type}).exec(function(err, words){
        callback(err, words);
     });
 };

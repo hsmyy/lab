@@ -29,8 +29,8 @@ module.exports = function(Multiply, app, auth, database) {
     });
   });
 
-  app.get('/multiply/words', function(req, res, next){
-    WordService.get(function(err, words){
+  app.get('/multiply/words/:type', function(req, res, next){
+    WordService.get(req.param('type'), function(err, words){
         if(err){
             res.render('error',{
                 status : 500

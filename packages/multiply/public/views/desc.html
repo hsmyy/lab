@@ -1,4 +1,4 @@
-<div ng-controller="WordController">
+<div class="" data-ng-controller="DescController">
     <div ng-if="step == 1">
         <div class="body">
             <div class="caption">
@@ -7,46 +7,35 @@
                 </h3>
 
                 <h3>
-                    按“开始”进入语词测试
+                    按“开始”进入情景描述测试
                 </h3>
             </div>
         </div>
         <div class="text-center">
             <hr/>
-            <button class="btn btn-primary" ng-click="startWord()">开始</button>
+            <button class="btn btn-primary" ng-click="startDesc()">开始</button>
         </div>
     </div>
-
-    <!-- word -->
     <div ng-if="step == 2">
         <div class="body">
             <h4>
-                问题{{wordCur + 1}} :
+                问题: {{ques.text}}
             </h4>
-            <hr/>
-            <div class="well">
-                <div class="text-center" style="height: 200px;padding-top:80px;">
-                    <div ng-if="wordAttention == 1">
-                        <h2>+</h2>
-                    </div>
-                    <div ng-if="wordAttention == 2">
-                        <h2>{{wordSet[wordCur].ques}}</h2>
-                    </div>
-                </div>
-            </div>
+            <h4>
+                {{ques.prompt}}
+            </h4>
+            <hr />
+            <textarea class="form-control" ng-model="ans" rows="15"></textarea>
         </div>
-        <div class="text-center">
-            <button class="btn btn-default" ng-click="wordAns(true)">真词</button>
-            <button class="btn btn-default" ng-click="wordAns(false)">假词</button>
+        <div>
+
         </div>
     </div>
-
-    <!-- step 2 -->
     <div ng-if="step == 3">
         <div class="body">
             <div class="caption">
                 <h3>
-                    词语测试结束。
+                    情景描述测试结束。
                 </h3>
                 <h3>
                     请您拿起2号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒。
