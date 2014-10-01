@@ -30,16 +30,16 @@
             <hr/>
             <div class="row caption">
                 <div class="col-sm-6 text-center ansBox" ng-repeat="ans in mulCur.answer">
-                    <button class="btn btn-default" ng-click="nextMulTest($index)">{{ans}}</button>
+                    <button class="btn btn-default btn-lg" ng-click="nextMulTest($index)">{{ans}}</button>
                 </div>
             </div>
         </div>
         <div class="text-center">
             <div class="alert-danger" ng-if="last == 0">
-                上题答案：错误
+                <h4>上题答案：错误</h4>
             </div>
             <div class="alert-success" ng-if="last == 1">
-                上题答案：正确
+                <h4>上题答案：正确</h4>
             </div>
         </div>
     </div>
@@ -66,16 +66,22 @@
             <hr/>
             <div class="row caption">
                 <div class="col-sm-6 text-center ansBox" ng-repeat="ans in mulCur.answer">
-                    <button class="btn btn-default" ng-click="nextMul($index)">{{ans}}</button>
+                    <button class="btn btn-default btn-lg" ng-click="nextMul($index)">{{ans}}</button>
                 </div>
             </div>
         </div>
         <div class="text-center">
+            <div class="alert-danger">
+                当前排名：{{rank + 1}}/100
+            </div>
             <div class="alert-danger" ng-if="last == 0">
-                上题答案：错误
+                <h4>上题答案：错误</h4>
+            </div>
+            <div class="alert-danger" ng-if="last == 2">
+                <h4>上题答案：超时</h4>
             </div>
             <div class="alert-success" ng-if="last == 1">
-                上题答案：正确
+                <h4>上题答案：正确</h4>
             </div>
             <div class="alert-info">
                 本题时限：{{duration}} ms.

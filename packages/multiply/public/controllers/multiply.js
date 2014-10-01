@@ -15,6 +15,8 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
         $scope.mulCur = {};
         $scope.result = 0;
 
+        $scope.rank = 50;
+
         var timerPromise;
 
         $scope.startMulTest = function () {
@@ -57,7 +59,18 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
                     $timeout.cancel(timerPromise);
                 }
             } else {
-                $scope.last = 0;
+                $scope.last = 2;
+            }
+            if($scope.last === 1){
+                $scope.rank -= 1;
+                if($scope.rank < 0){
+                    $scope.rank = 0;
+                }
+            }else{
+                $scope.rank += 10;
+                if($scope.rank > 99){
+                    $scope.rank = 99;
+                }
             }
             var correctUpdate = checker.update($scope.last);
             changeDuration(correctUpdate);
