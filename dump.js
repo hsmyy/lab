@@ -2,6 +2,7 @@
  * Created by fc on 14-10-8.
  */
 
+'use strict';
 var mongoose = require('mongoose'),
     config = require('./config/env/development');
 var Schema = mongoose.Schema;
@@ -56,15 +57,15 @@ var AnsSchema = new Schema({
 var Ans = mongoose.model('Ans', AnsSchema);
 
 function splitArray(data,convertData, attrKey){
-    for(var j = 0,nn = data[attrKey].length; j < nn; ++j){
-        convertData[attrKey + j] = data[attrKey][j] != null ? data[attrKey][j] : -1;
+    for(var j = 0,nn = data[attrKey].length; j < nn; j += 1){
+        convertData[attrKey + j] = data[attrKey][j] !== null ? data[attrKey][j] : -1;
     }
 }
 
 Ans.find('',function(err, dataset){
     //convert data
     var converted = [];
-    for(var i = 0,n = dataset.length; i < n; ++i){
+    for(var i = 0,n = dataset.length; i < n; i += 1){
         var convertData = {};
         var data = dataset[i];
         console.log(data);
