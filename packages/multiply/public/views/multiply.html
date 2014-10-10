@@ -35,11 +35,17 @@
             </div>
         </div>
         <div class="text-center">
-            <div class="alert-danger" ng-if="last == 0">
-                <h4>上题答案：错误</h4>
+            <div class="alert-danger horrible" ng-if="last == 0">
+                <div>
+                    <img src="multiply/assets/img/err.png"/>
+                </div>
+                <h3>上题答案：错误</h3>
             </div>
-            <div class="alert-success" ng-if="last == 1">
-                <h4>上题答案：正确</h4>
+            <div class="alert-success horrible" ng-if="last == 1">
+                <div>
+                    <img src="multiply/assets/img/correct.png"/>
+                </div>
+                <h3>上题答案：正确</h3>
             </div>
         </div>
     </div>
@@ -71,16 +77,25 @@
             </div>
         </div>
         <div class="text-center">
-            <div class="alert-danger">
+            <div class="alert-primary rank">
                 当前排名：{{rank + 1}}/100
             </div>
-            <div class="alert-danger" ng-if="last == 0">
+            <div class="alert-danger horrible" ng-if="last == 0">
+                <div>
+                    <img src="multiply/assets/img/err.png"/>
+                </div>
                 <h4>上题答案：错误</h4>
             </div>
-            <div class="alert-danger" ng-if="last == 2">
+            <div class="alert-danger horrible" ng-if="last == 2">
+                <div>
+                    <img src="multiply/assets/img/clock.png" width="180"/>
+                </div>
                 <h4>上题答案：超时</h4>
             </div>
-            <div class="alert-success" ng-if="last == 1">
+            <div class="alert-success horrible" ng-if="last == 1">
+                <div>
+                    <img src="multiply/assets/img/correct.png"/>
+                </div>
                 <h4>上题答案：正确</h4>
             </div>
             <div class="alert-info">

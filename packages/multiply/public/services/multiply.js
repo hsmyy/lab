@@ -31,19 +31,19 @@ Multiply.factory('CorrectCheck', [
         return {
             update : function(result){
                 if(cur === 0){
-                    if(result === 0){
+                    if(result !== 1){
                         cur = -1;
                     }else{
                         cur = 1;
                     }
                 }else if(cur > 0){
-                    if(result === 0){
+                    if(result !== 1){
                         cur = -1;
                     }else{
                         cur += 1;
                     }
                 }else{
-                    if(result === 0){
+                    if(result !== 1){
                         cur -= 1;
                     }else{
                         cur = 1;

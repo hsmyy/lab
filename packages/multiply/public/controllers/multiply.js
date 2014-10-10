@@ -5,8 +5,8 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
         $scope.step = 1;
 
         $scope.time = 10;//TODO change as 120 second in production
-        $scope.firstmin = 100;
-        $scope.firstmax = 999;
+        $scope.firstmin = 10;
+        $scope.firstmax = 99;
         $scope.secondmin = 10;
         $scope.secondmax = 99;
         $scope.testNumber = 3;
@@ -42,12 +42,15 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
         $scope.startMul = function () {
             $scope.step += 1;
             $scope.mulIter = -1;
+            //small bug, hot fix
+            var lastAns = $scope.last;
             $scope.nextMul();
+            $scope.last = lastAns;
             $timeout(function () {
                 if (timerPromise !== undefined) {
                     $timeout.cancel(timerPromise);
                 }
-                console.log($scope.result + ',' + $scope.mulIter);
+                //console.log($scope.result + ',' + $scope.mulIter);
                 $scope.step += 1;
             }, 1000 * $scope.time);
         };
@@ -62,12 +65,12 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
                 $scope.last = 2;
             }
             if($scope.last === 1){
-                $scope.rank -= 1;
+                $scope.rank -= parseInt(Math.random() * 5) + 2;
                 if($scope.rank < 0){
                     $scope.rank = 0;
                 }
             }else{
-                $scope.rank += 10;
+                $scope.rank += parseInt(Math.random() * 10) + 5;
                 if($scope.rank > 99){
                     $scope.rank = 99;
                 }
