@@ -16,40 +16,40 @@ Multiply.register(function (app, auth, database) {
     Multiply.routes(app, auth, database);
 
     //We are adding a link to the main menu for all authenticated users
-    Multiply.menus.add({
-        title: '乘法实验',
-        link: '乘法实验',
-        roles: ['authenticated'],
-        menu: 'main'
-    });
-
-    Multiply.menus.add({
-        title: '描述实验',
-        link: '描述实验',
-        roles: ['authenticated'],
-        menu: 'main'
-    });
-
-    Multiply.menus.add({
-        title: '辩词实验',
-        link: '辩词实验',
-        roles: ['authenticated'],
-        menu: 'main'
-    });
-
-    Multiply.menus.add({
-        title: '问卷调查',
-        link: '问卷调查',
-        roles: ['authenticated'],
-        menu: 'main'
-    });
-
-    Multiply.menus.add({
-        title: '计时器',
-        link: '计时器',
-        roles: ['authenticated'],
-        menu: 'main'
-    });
+//    Multiply.menus.add({
+//        title: '乘法实验',
+//        link: '乘法实验',
+//        roles: ['authenticated'],
+//        menu: 'main'
+//    });
+//
+//    Multiply.menus.add({
+//        title: '描述实验',
+//        link: '描述实验',
+//        roles: ['authenticated'],
+//        menu: 'main'
+//    });
+//
+//    Multiply.menus.add({
+//        title: '辩词实验',
+//        link: '辩词实验',
+//        roles: ['authenticated'],
+//        menu: 'main'
+//    });
+//
+//    Multiply.menus.add({
+//        title: '问卷调查',
+//        link: '问卷调查',
+//        roles: ['authenticated'],
+//        menu: 'main'
+//    });
+//
+//    Multiply.menus.add({
+//        title: '计时器',
+//        link: '计时器',
+//        roles: ['authenticated'],
+//        menu: 'main'
+//    });
 
     Multiply.menus.add({
         title: '实验',
