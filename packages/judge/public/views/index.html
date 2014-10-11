@@ -1,0 +1,12 @@
+<div class="card well" data-ng-controller="JudgeController">
+    <div ng-if="!phase || phase == 'standby'">
+        <div ng-include="'judge/views/opening.html'"></div>
+    </div>
+    <div ng-if="phase == 'press'">
+        <div ng-include="'judge/views/press.html'"></div>
+    </div>
+    <div ng-if="phase == 'closing'">
+        <div ng-include="'judge/views/closing.html'"></div>
+    </div>
+</div>
+
