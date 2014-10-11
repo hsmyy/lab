@@ -34,6 +34,7 @@ nb-configuration.xml
 .nodemonignore
 npm-debug.log
 node_modules/
+logs/
 
 # --------------------
 # SASS Files
