@@ -69,7 +69,7 @@ module.exports = function(grunt) {
     },
     nodemon: {
       dev: {
-        script: 'server.js',
+        script: 'server4.js',
         options: {
           args: [],
           ignore: ['node_modules/**'],
@@ -90,7 +90,7 @@ module.exports = function(grunt) {
       options: {
         reporter: 'spec',
         require: [
-          'server.js',
+          'server4.js',
           function() {
             require('meanio/lib/util').preload(__dirname + '/packages/**/server', 'model');
           }
@@ -111,7 +111,7 @@ module.exports = function(grunt) {
     forever: {
         server:{
             options: {
-                index: 'server.js',
+                index: 'server4.js',
                     logDir: 'logs'
             }
         }
