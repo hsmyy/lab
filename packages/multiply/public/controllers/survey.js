@@ -3,7 +3,8 @@
  */
 'use strict';
 
-angular.module('mean.multiply').controller('SurveyController', ['$scope', '$http', 'DataService', function ($scope, $http, DataService) {
+angular.module('mean.multiply').controller('SurveyController',
+    ['$scope', '$http', 'Global', 'DataService', function ($scope, $http, Global, DataService) {
     // Survey Name: survey1, survey2, survey-student, survey-lesshealth, survey5.
 //    console.log('Survey Name: ' + $scope.surveyName[0]);
     $scope.global = Global;
@@ -51,7 +52,7 @@ angular.module('mean.multiply').controller('SurveyController', ['$scope', '$http
         } else if($scope.surveyName[1] === 'helpotheract') {
             DataService.setData('survey6-answer', angular.copy($scope.answers));
 //            console.log(DataService.all());
-            DataService.send($scope.global.user['_id']);
+            DataService.send($scope.global.user._id);
             $scope.$emit('set-phase', 'closing');
         }
     };

@@ -18,7 +18,7 @@ angular.module('mean.judge').controller('JudgePressController', ['$scope', '$tim
             $scope.$emit('set-phase', 'closing');
         };
 
-        $scope.collect = []
+        $scope.collect = [];
         var promise;
         var recordInterval = 20 * 1000;
         promise = $timeout(function record(){
