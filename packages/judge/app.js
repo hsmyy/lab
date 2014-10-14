@@ -17,12 +17,12 @@ Judge.register(function(app, auth, database) {
   Judge.routes(app, auth, database);
 
   //We are adding a link to the main menu for all authenticated users
-  Judge.menus.add({
-    title: 'judge test',
-    link: 'judge',
-    roles: ['authenticated'],
-    menu: 'main'
-  });
+//  Judge.menus.add({
+//    title: 'judge test',
+//    link: 'judge',
+//    roles: ['authenticated'],
+//    menu: 'main'
+//  });
 
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above
