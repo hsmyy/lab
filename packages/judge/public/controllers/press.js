@@ -3,8 +3,8 @@
  */
 'use strict';
 
-angular.module('mean.judge').controller('JudgePressController', ['$scope', '$timeout', 'Global', 'Judge',
-    function($scope, $timeout, Global, Judge) {
+angular.module('mean.judge').controller('JudgePressController', ['$scope', '$timeout', 'Global', 'Judge', 'Timer',
+    function($scope, $timeout, Global, Judge, timer) {
         $scope.global = Global;
         $scope.package = {
             name: 'judge'
@@ -14,11 +14,16 @@ angular.module('mean.judge').controller('JudgePressController', ['$scope', '$tim
             if (promise !== undefined) {
                 $timeout.cancel(promise);
             }
+            $scope.time = timer.tok();
             console.log($scope.collect);
+            console.log($scope.clicked);
+            console.log($scope.time);
             $scope.$emit('set-phase', 'closing');
         };
 
-        $scope.collect = []
+        $scope.collect = [];
+        $scope.clicked = [];
+
         var promise;
         var recordInterval = 20 * 1000;
         promise = $timeout(function record(){
@@ -37,9 +42,12 @@ angular.module('mean.judge').controller('JudgePressController', ['$scope', '$tim
             $scope.finishTest();
         },10 * 60 * 1000);
 
+        timer.tik();
+
         $scope.moreThan3 = false;
         $scope.clickNum = 0;
         $scope.firstClick = function(idx){
+            $scope.clicked.push(idx);
             $scope.sounds[idx].status = 2;
             $scope.clickNum += 1;
             if($scope.clickNum >= 3){

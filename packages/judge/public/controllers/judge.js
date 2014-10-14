@@ -6,7 +6,7 @@ angular.module('mean.judge').controller('JudgeController', ['$scope', 'Global', 
         $scope.package = {
           name: 'judge'
         };
-
+      console.log($scope.global);
       $scope.phase = 'standby';
 
       $scope.$on('set-phase', function (event, phase) {

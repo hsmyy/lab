@@ -8,6 +8,7 @@ angular.module('mean.multiply').controller('TestController', ['$scope', '$http',
         $scope.global = Global;
         $scope.phase = 'standby';
 
+
         $scope.$on('set-phase', function (event, phase) {
             $scope.phase = phase;
         });
