@@ -14,6 +14,7 @@ angular.module('mean.multiply').controller('TestController', ['$scope', '$http',
 
         $scope.startTest = function () {
             $scope.phase = 'word';
+            //$scope.phase = 'tuoye';
         };
     }
 ]);

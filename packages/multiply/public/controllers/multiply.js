@@ -1,21 +1,26 @@
 'use strict';
 
-angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$timeout', 'Global', 'Multiply', 'Timer',
-    'CorrectCheck', 'MulQuestions', 'DataService', function ($scope, $timeout, Global, Multiply, timer, checker, mulQues, DataService) {
+angular.module('mean.multiply').controller('MultiplyController',
+    ['$scope', '$timeout', 'Global', 'Multiply', 'Timer',
+    'CorrectCheck', 'MulQuestions', 'DataService', 'Config',
+        function ($scope, $timeout, Global, Multiply, timer,
+                  checker, mulQues, DataService, config) {
         $scope.step = 1;
 
-        $scope.time = 10;//TODO change as 120 second in production
-        $scope.firstmin = 10;
-        $scope.firstmax = 99;
-        $scope.secondmin = 10;
-        $scope.secondmax = 99;
-        $scope.testNumber = 3;
+        $scope.time = config.multiple;//TODO change as 120 second in production
+        $scope.firstmin = config.mul_first_min;
+        $scope.firstmax = config.mul_first_max;
+        $scope.secondmin = config.mul_second_min;
+        $scope.secondmax = config.mul_second_max;
+        $scope.testNumber = config.mul_test_num;
 
         $scope.mulIter = -1;
         $scope.mulCur = {};
         $scope.result = 0;
 
         $scope.rank = 50;
+
+        $scope.stage = 'cal';
 
         var timerPromise;
 
@@ -29,14 +34,26 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
         $scope.nextMulTest = function (ans) {
             if (ans !== undefined) {
                 $scope.last = judge($scope.mulCur, ans);
+                /*global $:false */
+                $scope.stage = 'ans';
+                $('#mulTestTimer')[0].start();
             }
+            $scope.mulIter += 1;
             if ($scope.mulIter + 1 < $scope.testNumber) {
-                $scope.mulIter += 1;
                 $scope.mulCur = mulQues.random($scope.firstmin, $scope.firstmax, $scope.secondmin, $scope.secondmax);
             } else {
                 $scope.duration = parseInt(timer.tok() / 3);
-                $scope.step += 1;
             }
+        };
+
+        $scope.onTestTimeUp = function(){
+            $scope.$apply(function(){
+                if($scope.mulIter + 1 <= $scope.testNumber){
+                    $scope.stage = 'cal';
+                }else{
+                    $scope.step += 1;
+                }
+            });
         };
 
         $scope.startMul = function () {
@@ -44,8 +61,12 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
             $scope.mulIter = -1;
             //small bug, hot fix
             var lastAns = $scope.last;
-            $scope.nextMul();
+            $scope.mulIter += 1;
+            $scope.mulCur = mulQues.random($scope.firstmin, $scope.firstmax, $scope.secondmin, $scope.secondmax);
+            //$scope.nextMul();
             $scope.last = lastAns;
+            $scope.stage = 'cal';
+            timerPromise = $timeout($scope.nextMul, $scope.duration);
             $timeout(function () {
                 if (timerPromise !== undefined) {
                     $timeout.cancel(timerPromise);
@@ -53,6 +74,13 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
                 //console.log($scope.result + ',' + $scope.mulIter);
                 $scope.step += 1;
             }, 1000 * $scope.time);
+        };
+
+        $scope.onTimeUp = function(){
+            $scope.$apply(function(){
+                $scope.stage = 'cal';
+                timerPromise = $timeout($scope.nextMul, $scope.duration);
+            });
         };
 
         $scope.nextMul = function (ans) {
@@ -75,12 +103,16 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
                     $scope.rank = 99;
                 }
             }
+
             var correctUpdate = checker.update($scope.last);
             changeDuration(correctUpdate);
 
             $scope.mulIter += 1;
             $scope.mulCur = mulQues.random($scope.firstmin, $scope.firstmax, $scope.secondmin, $scope.secondmax);
-            timerPromise = $timeout($scope.nextMul, $scope.duration);
+
+            $scope.stage = 'ans';
+            /*global $:false */
+            $('#mulTimer')[0].start();
         };
 
         function changeDuration(correctUpdate) {
@@ -106,6 +138,7 @@ angular.module('mean.multiply').controller('MultiplyController', ['$scope', '$ti
                 'result' : $scope.result,
                 'num' : $scope.mulIter
             }));
-            $scope.$emit('set-phase', 'survey2');
+            //$scope.$emit('set-phase', 'survey2');
+            $scope.$emit('set-phase', 'tuoye3');
         };
     }]);

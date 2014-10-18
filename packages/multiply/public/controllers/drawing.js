@@ -3,8 +3,18 @@
  */
 'use strict';
 
-angular.module('mean.multiply').controller('DrawingController', ['$scope', '$timeout', '$http', 'DataService', function ($scope, $timeout, $http, DataService) {
+angular.module('mean.multiply').controller('DrawingController',
+    ['$scope', '$timeout', '$http', 'DataService', 'Config',
+        function ($scope, $timeout, $http, DataService, config) {
     $scope.step = 1;
+
+    //TODO change time
+    $scope.periodDuration = config.drawing;
+    $scope.tuoyeDuration = config.tuoye;
+
+    $scope.text = '开始';
+    $scope.wait = false;
+    $scope.command = 1;
 
     $scope.onTimeUp = function() {
         /*global $:false */
@@ -12,7 +22,24 @@ angular.module('mean.multiply').controller('DrawingController', ['$scope', '$tim
         alert('时间到，请点击关闭本对话框并按接下来的提示操作。');
         $scope.$apply(function() {
             $scope.step += 1;
+            $scope.text = '开始';
+            $scope.wait = false;
+            $scope.command = 1;
         });
+    };
+
+    $scope.onTuoyeTimeUp = function(){
+        alert('时间到，将棉条放回1号管盖好放入盒中，点击“确定”');
+        $scope.$apply(function(){
+            $scope.command = 2;
+        });
+    };
+
+    $scope.startTimer = function(){
+        /*global $:false */
+        $('#drawTimer')[0].start();
+        $scope.text = '请等待';
+        $scope.wait = true;
     };
 
     $scope.saveAndNext = function () {

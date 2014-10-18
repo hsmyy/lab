@@ -3,8 +3,13 @@
  */
 'use strict';
 
-angular.module('mean.multiply').controller('WordController', ['$scope', '$timeout', '$http', 'DataService', 'Global', function ($scope, $timeout, $http, DataService) {
+angular.module('mean.multiply').controller('WordController',
+    ['$scope', '$timeout', '$http', 'DataService', 'Global', 'Config',
+        function ($scope, $timeout, $http, DataService, Global, config) {
     $scope.step = 1;
+
+    $scope.wordTime = config.word;
+    $scope.wordPrompt = config.wordPrompt;
 
     var type;
     if($scope.global.user.roles.indexOf('A1') !== -1){
@@ -15,14 +20,6 @@ angular.module('mean.multiply').controller('WordController', ['$scope', '$timeou
 
     $http.get('multiply/words/' + type).success(function (data) {
         $scope.wordSet = data;
-
-        // Only for test.
-        /*$scope.wordSet = [
-            {_id: '541fd8fa2d0725ff8438bad5',
-                ques: '帮肋',
-                res: false,
-                type: 'help'}
-        ];*/
     }).error(function (data, status) {
         $scope.wordSet = [
             {
@@ -45,7 +42,7 @@ angular.module('mean.multiply').controller('WordController', ['$scope', '$timeou
         timerWord();
         $timeout(function () {
             $scope.step = 3;
-        }, 5000);//TODO change as 120*1000 when in production
+        }, $scope.wordTime * 1000);//TODO change as 120*1000 when in production
     };
 
     function timerWord() {
@@ -59,7 +56,7 @@ angular.module('mean.multiply').controller('WordController', ['$scope', '$timeou
 
         $timeout(function () {
             $scope.wordAttention = 2;
-        }, 750);
+        }, $scope.wordPrompt);
     }
 
     $scope.wordAns = function (ans) {
@@ -73,6 +70,7 @@ angular.module('mean.multiply').controller('WordController', ['$scope', '$timeou
 
     $scope.saveAndNext = function () {
         DataService.setData('word-answer', angular.copy($scope.wordAnswer));
-        $scope.$emit('set-phase', 'survey');
+        //$scope.$emit('set-phase', 'survey');
+        $scope.$emit('set-phase', 'tuoye2');
     };
 }]);

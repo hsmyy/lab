@@ -3,14 +3,17 @@
  */
 'use strict';
 
-angular.module('mean.multiply').controller('DescController', ['$scope', '$http', '$timeout','DataService', 'Global', 'Multiply',
-    function($scope, $http, $timeout, DataService, Global, Multiply) {
+angular.module('mean.multiply').controller('DescController',
+    ['$scope', '$http', '$timeout','DataService', 'Global', 'Multiply', 'Config',
+    function($scope, $http, $timeout, DataService, Global, Multiply, config) {
         $scope.global = Global;
         $scope.package = {
             name: 'multiply'
         };
 
         $scope.step = 1;
+
+        $scope.time = config.word;
 
         var qizzes = [{
             text: '请你仔细曾经回忆帮助他人的经历，并详细表述整个过程，写一段200字左右的短文，越详细越好!',
@@ -32,12 +35,13 @@ angular.module('mean.multiply').controller('DescController', ['$scope', '$http',
             $scope.step = 2;
             $timeout(function(){
                 $scope.step = 3;
-            }, 5000);
+            }, $scope.time * 1000);
         };
 
         $scope.saveAndNext = function () {
             DataService.setData('desc-answer', $scope.ans);
-            $scope.$emit('set-phase', 'survey');
+            //$scope.$emit('set-phase', 'survey');
+            $scope.$emit('set-phase', 'tuoye2');
         };
     }
 ]);

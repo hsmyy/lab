@@ -23,29 +23,35 @@
     </div>
     <div ng-if="step == 2">
         <!-- multiply test-->
-        <div class="body">
-            <h3>
-                测试问题{{mulIter + 1}} : {{mulCur.first}} * {{mulCur.second}} = ?
-            </h3>
-            <hr/>
-            <div class="row caption">
-                <div class="col-sm-6 text-center ansBox" ng-repeat="ans in mulCur.answer">
-                    <button class="btn btn-default btn-lg" ng-click="nextMulTest($index)">{{ans}}</button>
+        <timer id="mulTestTimer" interval="1000" countdown="1" class="hidden" autostart="false" finish-callback="onTestTimeUp()"></timer>
+        <div ng-show="stage == 'cal'">
+            <div class="body">
+                <h3>
+                    测试问题{{mulIter + 1}} : {{mulCur.first}} * {{mulCur.second}} = ?
+                </h3>
+                <hr/>
+                <div class="row caption">
+                    <div class="col-sm-6 text-center ansBox" ng-repeat="ans in mulCur.answer">
+                        <button class="btn btn-default btn-lg" ng-click="nextMulTest($index)">{{ans}}</button>
+                    </div>
                 </div>
             </div>
+
         </div>
-        <div class="text-center">
-            <div class="alert-danger horrible" ng-if="last == 0">
-                <div>
-                    <img src="multiply/assets/img/err.png"/>
+        <div ng-show="stage == 'ans'">
+            <div class="text-center">
+                <div class="alert-danger" ng-if="last == 0">
+                    <div>
+                        <img src="multiply/assets/img/err.png"/>
+                    </div>
+                    <h3>上题答案：错误</h3>
                 </div>
-                <h3>上题答案：错误</h3>
-            </div>
-            <div class="alert-success horrible" ng-if="last == 1">
-                <div>
-                    <img src="multiply/assets/img/correct.png"/>
+                <div class="alert-success" ng-if="last == 1">
+                    <div>
+                        <img src="multiply/assets/img/correct.png"/>
+                    </div>
+                    <h3>上题答案：正确</h3>
                 </div>
-                <h3>上题答案：正确</h3>
             </div>
         </div>
     </div>
@@ -65,43 +71,49 @@
     </div>
     <div ng-if="step == 4">
         <!-- multiply-->
-        <div class="body">
-            <h4>
-                问题{{mulIter + 1}} : {{mulCur.first}} * {{mulCur.second}} = ?
-            </h4>
-            <hr/>
-            <div class="row caption">
-                <div class="col-sm-6 text-center ansBox" ng-repeat="ans in mulCur.answer">
-                    <button class="btn btn-default btn-lg" ng-click="nextMul($index)">{{ans}}</button>
+        <timer id="mulTimer" interval="1000" countdown="1" class="hidden" autostart="false" finish-callback="onTimeUp()"></timer>
+        <div ng-show="stage == 'cal'">
+            <div class="body">
+                <h4>
+                    问题{{mulIter + 1}} : {{mulCur.first}} * {{mulCur.second}} = ?
+                </h4>
+                <hr/>
+                <div class="row caption">
+                    <div class="col-sm-6 text-center ansBox" ng-repeat="ans in mulCur.answer">
+                        <button class="btn btn-default btn-lg" ng-click="nextMul($index)">{{ans}}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="alert-primary rank">
+                    当前排名：{{rank + 1}}/100
+                </div>
+                <div class="alert-info">
+                    本题时限：{{duration}} ms.
                 </div>
             </div>
         </div>
-        <div class="text-center">
-            <div class="alert-primary rank">
-                当前排名：{{rank + 1}}/100
-            </div>
-            <div class="alert-danger horrible" ng-if="last == 0">
+        <div ng-show="stage == 'ans'">
+            <div class="alert-danger" ng-if="last == 0">
                 <div>
                     <img src="multiply/assets/img/err.png"/>
                 </div>
                 <h4>上题答案：错误</h4>
             </div>
-            <div class="alert-danger horrible" ng-if="last == 2">
+            <div class="alert-danger" ng-if="last == 2">
                 <div>
                     <img src="multiply/assets/img/clock.png" width="180"/>
                 </div>
                 <h4>上题答案：超时</h4>
             </div>
-            <div class="alert-success horrible" ng-if="last == 1">
+            <div class="alert-success" ng-if="last == 1">
                 <div>
                     <img src="multiply/assets/img/correct.png"/>
                 </div>
                 <h4>上题答案：正确</h4>
             </div>
-            <div class="alert-info">
-                本题时限：{{duration}} ms.
-            </div>
         </div>
+
     </div>
     <div ng-if="step == 5">
         <!-- step 3 -->

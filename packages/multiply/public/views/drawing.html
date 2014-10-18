@@ -1,109 +1,97 @@
 <!-- step 4 -->
 <div ng-controller="DrawingController">
-    <audio id="alertPlayer"><source src="/multiply/assets/mp3/alert.mp3" autoplay="true" loop="true" muted="false"></audio>
-    <div ng-if="step == 1">
-        <div class="body">
+    <div class="body">
+        <div ng-if="step == 1">
             <div class="caption">
                 <h3>
                     所有测试任务都已完成，您完成得很好，
                 </h3>
-
                 <h3>
-                    现在您需要等待30分钟，在此期间您要描摹一些非常简单的简笔画，不需要全部完成，
+                    请你描摹几张简笔画，尽量把注意力都放在画上
                 </h3>
-
                 <h3>
-                    中间到一定时间耳机中会有声音提醒您采集3次唾液，每次采集完唾液后继续绘画。
+                    10分钟后耳机中有声音提示你进行下面的操作
                 </h3>
-
                 <div style="text-align:center;font-size:120%">
                     <br>
-                    <timer countdown="10" interval="1000" finish-callback="onTimeUp()">
-                        <b>倒计时：{{mminutes}}:{{sseconds}}</b>
+                    <timer countdown="periodDuration" interval="1000" finish-callback="onTimeUp()" class="hidden">
                     </timer>
                 </div>
             </div>
         </div>
-        <div class="text-center">
-        </div>
-    </div>
-
-    <div ng-if="step == 2">
-        <div class="body">
+        <div ng-if="step == 2">
             <div class="caption">
-                <h3>
-                    10分钟到，
-                </h3>
-
-                <h3>
-                    请您请您拿起4号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒，
-                </h3>
-
-                <h3>
-                    继续绘画。
-                </h3>
-
+                <div ng-show="command == 1">
+                    <h3>
+                        10分钟到，请拿起4号管，将棉条放入口中咀嚼，点击“开始计时”
+                    </h3>
+                </div>
+                <div ng-show="command == 2">
+                    <h3>
+                        继续绘画。
+                    </h3>
+                </div>
                 <div style="text-align:center;font-size:120%">
                     <br>
-                    <timer countdown="10" interval="1000" finish-callback="onTimeUp()">
-                        <b>倒计时：{{mminutes}}:{{sseconds}}</b>
+                    <timer countdown="periodDuration" interval="1000" finish-callback="onTimeUp()" class="hidden">
                     </timer>
                 </div>
             </div>
         </div>
-        <div class="text-center">
-
-        </div>
-    </div>
-
-    <div ng-if="step == 3">
-        <!-- step 6 -->
-        <div class="body">
+        <div ng-if="step == 3">
             <div class="caption">
-                <h3>
-                    20分钟到，
-                </h3>
-
-                <h3>
-                    请您请您拿起5号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒，
-                </h3>
-
-                <h3>
-                    继续绘画。
-                </h3>
-
+                <div ng-show="command == 1">
+                    <h3>
+                        20分钟到，请拿起5号管，将棉条放入口中咀嚼，点击“开始计时”
+                    </h3>
+                </div>
+                <div ng-show="command == 2">
+                    <h3>
+                        继续绘画。
+                    </h3>
+                </div>
                 <div style="text-align:center;font-size:120%">
                     <br>
-                    <timer countdown="10" interval="1000" finish-callback="onTimeUp()">
-                        <b>倒计时：{{mminutes}}:{{sseconds}}</b>
+                    <timer countdown="periodDuration" interval="1000" finish-callback="onTimeUp()" class="hidden">
                     </timer>
                 </div>
             </div>
         </div>
-        <div class="text-center">
-
-        </div>
-    </div>
-
-    <div ng-if="step == 4">
-        <div class="body">
+        <div ng-if="step == 4">
             <div class="caption">
-                <h3>
-                    30分钟到，
-                </h3>
-
-                <h3>
-                    请您请您拿起6号收集器，按照标准操作采集完毕后迅速将采集器放入冰盒。
-                </h3>
-
-                <h3>
-                    最后请您填写几张问卷
-                </h3>
+                <div ng-show="command == 1">
+                    <h3>
+                        30分钟到，请拿起6号管，将棉条放入口中咀嚼，点击“开始计时”
+                    </h3>
+                </div>
+                <div ng-show="command == 2">
+                    <h3>
+                        最后请您填写几张问卷
+                    </h3>
+                </div>
             </div>
         </div>
-        <div class="text-center">
-            <hr/>
-            <button class="btn btn-primary" ng-click="saveAndNext()">填写问卷</button>
+    </div>
+    <div class="text-center">
+        <div ng-if="step == 1">
+
+        </div>
+        <div ng-if="step == 2">
+            <timer id="drawTimer" countdown="tuoyeDuration" interval="1000" autostart="false" finish-callback="onTuoyeTimeUp()" class="hidden"></timer>
+            <button class="btn btn-primary" ng-click="startTimer()" ng-disabled="wait">{{text}}</button>
+        </div>
+        <div ng-if="step == 3">
+            <timer id="drawTimer" countdown="tuoyeDuration" interval="1000" autostart="false" finish-callback="onTuoyeTimeUp()" class="hidden"></timer>
+            <button class="btn btn-primary" ng-click="startTimer()" ng-disabled="wait">{{text}}</button>
+        </div>
+        <div ng-if="step == 4">
+            <div ng-show="command == 1">
+                <timer id="drawTimer" countdown="tuoyeDuration" interval="1000" autostart="false" finish-callback="onTuoyeTimeUp()" class="hidden"></timer>
+                <button class="btn btn-primary" ng-click="startTimer()" ng-disabled="wait">{{text}}</button>
+            </div>
+            <div ng-show="command == 2">
+                <button class="btn btn-primary" ng-click="saveAndNext()">填写问卷</button>
+            </div>
         </div>
     </div>
 </div>

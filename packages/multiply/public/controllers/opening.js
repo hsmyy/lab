@@ -7,6 +7,9 @@ angular.module('mean.multiply').controller('OpeningController', ['$scope','Globa
     //console.log($scope.global);
 
     $scope.startTest = function () {
+        //$scope.$emit('set-phase', 'tuoye1');
+        //$scope.$emit('set-phase', 'drawing');
+
         if($scope.global.user.roles.indexOf('A1') !== -1 || $scope.global.user.roles.indexOf('A2') !== -1){
             $scope.$emit('set-phase', 'word');
         }else{
