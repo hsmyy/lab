@@ -48,10 +48,6 @@ angular.module('mean.multiply').controller('SurveyController',
             $scope.$emit('set-phase', 'survey5');
         } else if($scope.surveyName[1] === 'helpother') {
             DataService.setData('survey5-answer', angular.copy($scope.answers));
-            $scope.$emit('set-phase', 'survey6');
-        } else if($scope.surveyName[1] === 'helpotheract') {
-            DataService.setData('survey6-answer', angular.copy($scope.answers));
-//            console.log(DataService.all());
             DataService.send($scope.global.user._id);
             $scope.$emit('set-phase', 'closing');
         }

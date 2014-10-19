@@ -10,14 +10,15 @@
         <hr/>
         <form class="form-horizontal">
             <div class="form-group">
-                <label class="col-sm-6 text-right">描述项目</label>
-                <label class="col-sm-2 text-left">没有感觉</label>
-                <label class="col-sm-2 text-right">非常有感觉</label>
+                <label class="col-sm-6 text-right"></label>
+                <label class="col-sm-2 text-left">0</label>
+                <label class="col-sm-2 text-right">100</label>
             </div>
             <hr/>
             <div class="scroll">
                 <div class="form-group" ng-repeat="ques in questions" ng-show="$index >= pageSize * currentPage && $index < (pageSize * currentPage + pageSize)">
-                    <label class="col-sm-6 text-right">{{$index+1}}. {{ques.ques}}</label>
+                    <label class="col-sm-5 text-right">{{$index+1}}. {{ques.ques}}</label>
+                    <span class="col-sm-1"></span>
                     <div class="col-sm-4">
                         <div ui-slider="" min="0" max="10000" step="1" ng-model="answers[$index]"></div>
                     </div>

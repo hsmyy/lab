@@ -1,22 +1,8 @@
-db.forms.insert([{'ques': '我是紧张的','type': 'pressure'}])
-db.forms.insert([{'ques': '我感到紧张束缚','type': 'pressure'}])
-db.forms.insert([{'ques': '我感到安逸','type': 'pressure'}])
-db.forms.insert([{'ques': '我感到烦乱','type': 'pressure'}])
-db.forms.insert([{'ques': '我现在正烦恼，感到这种烦恼超过了可能的不幸','type': 'pressure'}])
-db.forms.insert([{'ques': '我感到满意','type': 'pressure'}])
-db.forms.insert([{'ques': '我感到害怕','type': 'pressure'}])
-db.forms.insert([{'ques': '我感到舒适','type': 'pressure'}])
-db.forms.insert([{'ques': '我有自信心','type': 'pressure'}])
-db.forms.insert([{'ques': '我觉得神经过敏','type': 'pressure'}])
-db.forms.insert([{'ques': '我极度紧张不安','type': 'pressure'}])
-db.forms.insert([{'ques': '我优柔寡断','type': 'pressure'}])
-db.forms.insert([{'ques': '我是轻松的','type': 'pressure'}])
-db.forms.insert([{'ques': '我感到心满意足','type': 'pressure'}])
-db.forms.insert([{'ques': '我是烦恼的','type': 'pressure'}])
-db.forms.insert([{'ques': '我感到慌乱','type': 'pressure'}])
-db.forms.insert([{'ques': '我感觉镇定','type': 'pressure'}])
-db.forms.insert([{'ques': '我感到愉快','type': 'pressure'}])
-
+db.forms.insert([{'ques': '感到紧张和焦虑','type': 'pressure'}])
+db.forms.insert([{'ques': '感到心跳很快，身体不太舒服','type': 'pressure'}])
+db.forms.insert([{'ques': '想马上离开这间实验室','type': 'pressure'}])
+db.forms.insert([{'ques': '感到心烦意乱','type': 'pressure'}])
+db.forms.insert([{'ques': '能控制自己的情绪，保持平和','type': 'pressure'}])
 
 db.forms.insert({'ques':'渴望真(爱)情却得不到',type:'student'});
 db.forms.insert({'ques':'青春期成长',type:'student'});
@@ -113,8 +99,6 @@ db.forms.insert({'ques':'对自己目前学习、生活不适应','type':'lesshe
 db.forms.insert({'ques':'觉得自己做事情的效率较低','type':'lesshealth'});
 db.forms.insert({'ques':'感到对自己的人际关系满不满意','type':'lesshealth'});
 
-
-
 db.forms.insert({'ques':'有他人在场时，我会竭尽全力帮助别人','type':'helpother'});
 db.forms.insert({'ques':'对我来说最大的成就感是给那些非常痛苦的人以安慰','type':'helpother'});
 db.forms.insert({'ques':'当别人请我帮忙时，我很少拒绝','type':'helpother'});
@@ -146,35 +130,6 @@ db.forms.insert({'ques':'当别人提出要我帮忙时，我会尽我所能的�
 db.forms.insert({'ques':'我经常帮助别人，即使从中得不到任何好处','type':'helpother'});
 db.forms.insert({'ques':'当别人心情很不好的时候，我常常帮助他们','type':'helpother'});
 
-/*
-db.forms.insert({'ques':'为人指路','type':'helpotheract'});
-db.forms.insert({'ques':'兑换零钱','type':'helpotheract'});
-db.forms.insert({'ques':'捐款','type':'helpotheract'});
-db.forms.insert({'ques':'帮助乞讨者','type':'helpotheract'});
-db.forms.insert({'ques':'捐赠衣物','type':'helpotheract'});
-
-db.forms.insert({'ques':'志愿服务','type':'helpotheract'});
-db.forms.insert({'ques':'献血','type':'helpotheract'});
-db.forms.insert({'ques':'帮人搬运','type':'helpotheract'});
-db.forms.insert({'ques':'扶起自行车','type':'helpotheract'});
-db.forms.insert({'ques':'排队让位','type':'helpotheract'});
-
-db.forms.insert({'ques':'退还多找的钱','type':'helpotheract'});
-db.forms.insert({'ques':'借给他人物品或金钱','type':'helpotheract'});
-db.forms.insert({'ques':'为他人讲题','type':'helpotheract'});
-db.forms.insert({'ques':'照顾小孩','type':'helpotheract'});
-db.forms.insert({'ques':'帮他人过马路','type':'helpotheract'});
-
-db.forms.insert({'ques':'主动让座','type':'helpotheract'});
-db.forms.insert({'ques':'接待新生','type':'helpotheract'});
-db.forms.insert({'ques':'照顾生病的同学或朋友','type':'helpotheract'});
-db.forms.insert({'ques':'倾听他人倾诉','type':'helpotheract'});
-db.forms.insert({'ques':'参加支教活动','type':'helpotheract'});
-
-db.forms.insert({'ques':'帮同学买东西','type':'helpotheract'});
-db.forms.insert({'ques':'赠与他人礼物','type':'helpotheract'});
-*/
-
 db.words.insert({'ques':'行善','type':'help','res': true});
 db.words.insert({'ques':'帮忙','type':'help','res': true});
 db.words.insert({'ques':'慈缮','type':'help','res': false});
@@ -196,8 +151,6 @@ db.words.insert({'ques':'救侪','type':'help','res': false});
 db.words.insert({'ques':'协助','type':'help','res': true});
 db.words.insert({'ques':'公益','type':'help','res': true});
 db.words.insert({'ques':'帮肋','type':'help','res': false});
-
-
 
 db.words.insert({'ques':'交通','type':'normal','res': true});
 db.words.insert({'ques':'行走','type':'normal','res': true});
