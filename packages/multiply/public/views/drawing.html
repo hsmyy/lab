@@ -77,16 +77,16 @@
 
         </div>
         <div ng-if="step == 2">
-            <timer id="drawTimer" countdown="tuoyeDuration" interval="1000" autostart="false" finish-callback="onTuoyeTimeUp()" class="hidden"></timer>
+            <timer id="drawTimer" countdown="tuoyeDuration" interval="1000" autostart="false" finish-callback="onTuoyeTimeUp(4)" class="hidden"></timer>
             <button class="btn btn-primary" ng-click="startTimer()" ng-disabled="wait">{{text}}</button>
         </div>
         <div ng-if="step == 3">
-            <timer id="drawTimer" countdown="tuoyeDuration" interval="1000" autostart="false" finish-callback="onTuoyeTimeUp()" class="hidden"></timer>
+            <timer id="drawTimer" countdown="tuoyeDuration" interval="1000" autostart="false" finish-callback="onTuoyeTimeUp(5)" class="hidden"></timer>
             <button class="btn btn-primary" ng-click="startTimer()" ng-disabled="wait">{{text}}</button>
         </div>
         <div ng-if="step == 4">
             <div ng-show="command == 1">
-                <timer id="drawTimer" countdown="tuoyeDuration" interval="1000" autostart="false" finish-callback="onTuoyeTimeUp()" class="hidden"></timer>
+                <timer id="drawTimer" countdown="tuoyeDuration" interval="1000" autostart="false" finish-callback="onTuoyeTimeUp(6)" class="hidden"></timer>
                 <button class="btn btn-primary" ng-click="startTimer()" ng-disabled="wait">{{text}}</button>
             </div>
             <div ng-show="command == 2">

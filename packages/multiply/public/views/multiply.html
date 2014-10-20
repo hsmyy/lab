@@ -94,26 +94,27 @@
             </div>
         </div>
         <div ng-show="stage == 'ans'">
-            <div class="alert-danger" ng-if="last == 0">
-                <div>
-                    <img src="multiply/assets/img/err.png"/>
+            <div class="text-center">
+                <div class="alert-danger" ng-if="last == 0">
+                    <div>
+                        <img src="multiply/assets/img/err.png"/>
+                    </div>
+                    <h4>上题答案：错误</h4>
                 </div>
-                <h4>上题答案：错误</h4>
-            </div>
-            <div class="alert-danger" ng-if="last == 2">
-                <div>
-                    <img src="multiply/assets/img/clock.png" width="180"/>
+                <div class="alert-danger" ng-if="last == 2">
+                    <div>
+                        <img src="multiply/assets/img/clock.png" width="200px"/>
+                    </div>
+                    <h4>上题答案：超时</h4>
                 </div>
-                <h4>上题答案：超时</h4>
-            </div>
-            <div class="alert-success" ng-if="last == 1">
-                <div>
-                    <img src="multiply/assets/img/correct.png"/>
+                <div class="alert-success" ng-if="last == 1">
+                    <div>
+                        <img src="multiply/assets/img/correct.png"/>
+                    </div>
+                    <h4>上题答案：正确</h4>
                 </div>
-                <h4>上题答案：正确</h4>
             </div>
         </div>
-
     </div>
     <div ng-if="step == 5">
         <!-- step 3 -->

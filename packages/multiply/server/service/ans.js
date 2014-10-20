@@ -6,12 +6,7 @@
 var Ans = require('../models/ans').Ans;
 
 exports.save = function(ans, callback){
-    console.log(ans.userid);
-    Ans.find({},function(err){
-        console.log(err);
-    });
-    Ans.update({userid : ans.userid}, ans, {upsert : true},function(err){
-        console.log(err);
+    Ans.update({userid : ans.data.userid}, ans.data, {upsert : true},function(err){
         callback(err);
     });
 };
