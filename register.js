@@ -13,17 +13,41 @@ mongoose.connect(config.db);
 
 var User = mongoose.model('User');
 
-var user = new User();
-user.name = 'test1';
-user.password = 'test1';
-user.email = 'test1@thu.com';
-user.username = 'test1';
-user.roles = ['authenticated','A1'];
-user.salt = crypto.randomBytes(16).toString('base64');
-var saltvar = new Buffer(user.salt, 'base64');
-user.hashed_password = crypto.pbkdf2Sync(user.password, saltvar, 10000, 64).toString('base64');
+var users = [];
+users.push({
+        'name' : 'a101',
+        'roles' : ['authenticated','A1']
+    });
+users.push({
+        'name' : 'a201',
+        'roles' : ['authenticated','A2']
+    });
+users.push({
+        'name' : 'b101',
+        'roles' : ['authenticated','B1']
+    });
+users.push({
+        'name' : 'b201',
+        'roles' : ['authenticated','B2']
+    });
+
+function save(oldUser){
+    var user = new User();
+    user.name = oldUser.name;
+    user.password = oldUser.name;
+    user.email = oldUser.name + '@thu.com';
+    user.username = oldUser.name;
+    user.roles = oldUser.roles;
+    user.salt = crypto.randomBytes(16).toString('base64');
+    var saltvar = new Buffer(user.salt, 'base64');
+    user.hashed_password = crypto.pbkdf2Sync(user.password, saltvar, 10000, 64).toString('base64');
 
 
-user.save(function(err){
-    console.log(err);
-});
+    user.save(function(err){
+        console.log(err);
+    });
+}
+
+for(var i = 0,n = users.length; i < n; i += 1){
+    save(users[i]);
+}
