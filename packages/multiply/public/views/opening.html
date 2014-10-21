@@ -1,10 +1,53 @@
 <!-- start -->
 <div ng-controller="OpeningController">
-    <div class="body">
+    <div ng-show="step == 1">
+        <div class="body">
 
+        </div>
+        <div class="text-center">
+            <hr>
+            <button class="btn btn-primary" ng-click="startTest()">开始测试</button>
+        </div>
     </div>
-    <div class="text-center">
-        <hr>
-        <button class="btn btn-primary" ng-click="startTest()">开始测试</button>
+    <div ng-show="step == 2">
+        <div class="body">
+            <h3>个人信息</h3>
+            <hr/>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">姓名</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">性别</label>
+                    <div class="col-sm-6">
+                        <label class="radio-inline">
+                            <input type="radio" name="sex" value="man">男
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="sex" value="woman">女
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">身高</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">体重</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <hr>
+            <button class="btn btn-primary" ng-click="startTest()">下一步</button>
+        </div>
     </div>
 </div>

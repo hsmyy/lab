@@ -18,7 +18,7 @@ angular.module('mean.multiply').controller('MultiplyController',
         $scope.mulCur = {};
         $scope.result = 0;
 
-        $scope.rank = 50;
+        $scope.rank = 10;
 
         $scope.stage = 'cal';
 
@@ -93,14 +93,14 @@ angular.module('mean.multiply').controller('MultiplyController',
                 $scope.last = 2;
             }
             if($scope.last === 1){
-                $scope.rank -= parseInt(Math.random() * 5) + 2;
+                $scope.rank -= parseInt(Math.random() * 5) + 1;
                 if($scope.rank < 0){
                     $scope.rank = 0;
                 }
             }else{
-                $scope.rank += parseInt(Math.random() * 10) + 5;
-                if($scope.rank > 99){
-                    $scope.rank = 99;
+                $scope.rank += parseInt(Math.random() * 10) + 4;
+                if($scope.rank > 19){
+                    $scope.rank = 19;
                 }
             }
 

@@ -34,8 +34,14 @@ angular.module('mean.multiply').controller('SurveyController',
     };
 
     $scope.saveAndNext = function() {
-        console.log($scope.answers)
-        if($scope.surveyName[1] === 'survey1-answer') {
+        if($scope.surveyName[1] === 'survey0-answer'){
+            DataService.setData('survey0-answer', angular.copy($scope.answers));
+            if($scope.global.user.roles.indexOf('A1') !== -1 || $scope.global.user.roles.indexOf('A2') !== -1){
+                $scope.$emit('set-phase', 'word');
+            }else{
+                $scope.$emit('set-phase', 'desc');
+            }
+        }else if($scope.surveyName[1] === 'survey1-answer') {
             DataService.setData('survey1-answer', angular.copy($scope.answers));
             $scope.$emit('set-phase', 'multiply');
         }else if($scope.surveyName[1] === 'survey2-answer'){

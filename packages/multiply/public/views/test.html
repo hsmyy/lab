@@ -6,6 +6,10 @@
         <div ng-include="'multiply/views/opening.html'"></div>
     </div>
 
+    <div ng-if="phase == 'survey0'">
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['pressure', 'survey0-answer']"></div>
+    </div>
+
     <!-- tuoye1 -->
     <div ng-if="phase == 'tuoye1'">
         <div ng-include="'multiply/views/tuoye.html'" ng-init="id='1'"></div>
