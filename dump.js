@@ -16,11 +16,19 @@ var AnsSchema = new Schema({
         type : String,
         required : true
     },
+    'survey0-answer':{
+        type : [Number],
+        required : true
+    },
     'survey1-answer' :{
         type : [Number],
         required : true
     },
     'survey2-answer' : {
+        type : [Number],
+        required : true
+    },
+    'survey3-answer' : {
         type : [Number],
         required : true
     },
@@ -51,6 +59,18 @@ var AnsSchema = new Schema({
             'result' : Number,
             'num' : Number
         }
+    },
+    'desc-answer' : {
+        type : String,
+        required : false
+    },
+    'profile' : {
+        type : {
+            'year' : String,
+            'sex' : String,
+            'height' : String,
+            'weight' : String
+        }
     }
 });
 
@@ -73,8 +93,10 @@ Ans.find('',function(err, dataset){
 //        for(var j = 0,nn = data['survey1-answer'].length; j < nn; ++j){
 //            convertData['survey1-answer' + j] = data['survey1-answer'][j] != null ? data['survey1-answer'][j] : -1;
 //        }
+        splitArray(data,convertData, 'survey0-answer');
         splitArray(data,convertData, 'survey1-answer');
         splitArray(data,convertData, 'survey2-answer');
+        splitArray(data,convertData, 'survey3-answer');
         splitArray(data,convertData, 'survey-student-answer');
         splitArray(data,convertData, 'survey-lesshealth-answer');
         splitArray(data,convertData, 'survey5-answer');

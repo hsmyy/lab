@@ -55,6 +55,10 @@ var AnsSchema = new Schema({
             'num' : Number
         }
     },
+    'desc-answer' : {
+        type : String,
+        required : false
+    },
     'profile' : {
         type : {
             'year' : String,

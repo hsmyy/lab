@@ -5,12 +5,24 @@
 
 angular.module('mean.multiply').factory('Config', [function(){
     return {
-        word : 10 * 1,
-        wordPromp : 750,
-        drawing : 10 * 1,
-        tuoye : 3 * 1,
+        //test
+        word : 10 * 1,//60 * 2
+        wordPrompt : 1000,// 10 * 60
+        drawing : 10 * 1,//10 * 60
+        tuoye : 3 * 1,// 1 * 60
 
-        multiple : 10 * 1,
+        multiple : 10 * 1,// 10 * 60
+        //real
+//        word : 60 * 2,
+//        wordPrompt : 1000,
+//        drawing : 10 * 60,
+//        tuoye : 1 * 60,
+//        multiple : 10 * 60,
+
+
+
+
+
         mul_first_min : 10,
         mul_first_max : 99,
         mul_second_min : 10,

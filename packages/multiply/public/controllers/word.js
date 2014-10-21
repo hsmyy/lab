@@ -12,7 +12,16 @@ angular.module('mean.multiply').controller('WordController',
     $scope.wordPrompt = config.wordPrompt;
 
     var type;
-    if($scope.global.user.roles.indexOf('A1') !== -1){
+    $scope.global = Global;
+
+    $scope.isHelp = function(){
+        if($scope.global.user.roles.indexOf('A1') !== -1){
+            return true;
+        }else{
+            return false;
+        }
+    };
+    if($scope.isHelp()){
         type = 'help';
     }else{
         type = 'normal';
