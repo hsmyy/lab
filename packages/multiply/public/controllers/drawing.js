@@ -28,6 +28,10 @@ angular.module('mean.multiply').controller('DrawingController',
         });
     };
 
+    $scope.$on('set-command', function(event, command){
+        $scope.command = command;
+    });
+
     $scope.onTuoyeTimeUp = function(id){
         $('#alertPlayer').trigger('play');
         alert('时间到，将棉条放回'+id+'号管盖好放入盒中，点击“确定”');

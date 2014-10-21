@@ -61,7 +61,10 @@ angular.module('mean.multiply').controller('SurveyController',
         }else if($scope.surveyName[1] === 'survey2-answer'){
             DataService.setData('survey2-answer', angular.copy($scope.answers));
             $scope.$emit('set-phase', 'drawing');
-        } else if($scope.surveyName[1] === 'student') {
+        }else if($scope.surveyName[1] === 'survey3-answer'){
+            DataService.setData('survey3-answer', angular.copy($scope.answers));
+            $scope.$emit('set-command',3);
+        }else if($scope.surveyName[1] === 'student') {
             DataService.setData('survey-student-answer', angular.copy($scope.answers));
             $scope.$emit('set-phase', 'survey-lesshealth');
         } else if($scope.surveyName[1] === 'lesshealth') {

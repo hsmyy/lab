@@ -11,11 +11,19 @@ var AnsSchema = new Schema({
         type : String,
         required : true
     },
+    'survey0-answer':{
+        type : [Number],
+        required : true
+    },
     'survey1-answer' :{
         type : [Number],
         required : true
     },
     'survey2-answer' : {
+        type : [Number],
+        required : true
+    },
+    'survey3-answer' : {
         type : [Number],
         required : true
     },
@@ -45,6 +53,14 @@ var AnsSchema = new Schema({
         type : {
             'result' : Number,
             'num' : Number
+        }
+    },
+    'profile' : {
+        type : {
+            'name' : String,
+            'sex' : String,
+            'height' : String,
+            'weight' : String
         }
     }
 });
