@@ -4,9 +4,9 @@
 'use strict';
 
 angular.module('mean.multiply').controller('DescController',
-    ['$scope', '$http', '$timeout','DataService', 'Global', 'Multiply', 'Config',
-    function($scope, $http, $timeout, DataService, Global, Multiply, config) {
-        $scope.global = Global;
+    ['$scope', '$http', '$timeout','DataService', 'Account', 'Multiply', 'Config',
+    function($scope, $http, $timeout, DataService, Account, Multiply, config) {
+        $scope.global = Account.load();
         $scope.package = {
             name: 'multiply'
         };
@@ -23,7 +23,7 @@ angular.module('mean.multiply').controller('DescController',
             prompt: '（可以写房间的布局，房间内的陈设等等）'
         }];
 
-        if(Global.user.roles.indexOf('B1') !== -1){
+        if($scope.global.user.roles.indexOf('B1') !== -1){
             $scope.ques = qizzes[0];
         }else{
             $scope.ques = qizzes[1];

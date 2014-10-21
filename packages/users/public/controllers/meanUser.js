@@ -9,12 +9,14 @@ angular.module('mean.users')
       $scope.login = function() {
         $http.post('/login', {
           email: $scope.user.email,
-          password: $scope.user.password
+          password: $scope.user.password,
+            referer: '/'
         })
           .success(function(response) {
             // authentication OK
             $scope.loginError = 0;
             $rootScope.user = response.user;
+            window.user = response.user;
             $rootScope.$emit('loggedin');
             if (response.redirect) {
               if (window.location.href === response.redirect) {

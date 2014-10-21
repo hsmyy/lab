@@ -4,15 +4,15 @@
 'use strict';
 
 angular.module('mean.multiply').controller('WordController',
-    ['$scope', '$timeout', '$http', 'DataService', 'Global', 'Config',
-        function ($scope, $timeout, $http, DataService, Global, config) {
+    ['$scope', '$timeout', '$http', 'DataService', 'Account', 'Config',
+        function ($scope, $timeout, $http, DataService, Account, config) {
     $scope.step = 1;
 
     $scope.wordTime = config.word;
     $scope.wordPrompt = config.wordPrompt;
 
     var type;
-    $scope.global = Global;
+    $scope.global = Account.load();
 
     $scope.isHelp = function(){
         if($scope.global.user.roles.indexOf('A1') !== -1){

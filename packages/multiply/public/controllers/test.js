@@ -3,9 +3,10 @@
  */
 'use strict';
 
-angular.module('mean.multiply').controller('TestController', ['$scope', '$http', '$timeout', 'Global', 'Multiply', 'Timer', 'CorrectCheck', 'MulQuestions',
-    function ($scope, $http, $timeout, Global, Multiply, timer, checker, mulQues) {
-        $scope.global = Global;
+angular.module('mean.multiply').controller('TestController',
+    ['$scope', '$http', '$timeout', 'Account', 'Multiply', 'Timer', 'CorrectCheck', 'MulQuestions',
+    function ($scope, $http, $timeout, Account, Multiply, timer, checker, mulQues) {
+        $scope.global = Account.load();
         $scope.phase = 'standby';
 
         $scope.$on('set-phase', function (event, phase) {

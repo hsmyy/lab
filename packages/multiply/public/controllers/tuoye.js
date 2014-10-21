@@ -4,9 +4,9 @@
 'use strict';
 
 angular.module('mean.multiply').controller('TuoyeController',
-    ['$scope','$timeout','$http','Global', 'Config',
-        function($scope, $timeout, $http, Global, config){
-        $scope.global = Global;
+    ['$scope','$timeout','$http','Account', 'Config',
+        function($scope, $timeout, $http, Account, config){
+        $scope.global = Account.load();
         $scope.step = 1;
 
         $scope.text = '开始';

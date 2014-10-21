@@ -4,10 +4,11 @@
 'use strict';
 
 angular.module('mean.multiply').controller('SurveyController',
-    ['$scope', '$http', 'Global', 'DataService', function ($scope, $http, Global, DataService) {
+    ['$scope', '$http', 'Account', 'DataService',
+        function ($scope, $http, Account, DataService) {
     // Survey Name: survey1, survey2, survey-student, survey-lesshealth, survey5.
 //    console.log('Survey Name: ' + $scope.surveyName[0]);
-    $scope.global = Global;
+    $scope.global = Account.load();
     $scope.pageSize = 5;
     $scope.currentPage = 0;
     $scope.currentPageQuestions = [];
