@@ -25,13 +25,13 @@ angular.module('mean.multiply').controller('SurveyController',
         $scope.title = '下面的描述是否符合你此时此刻的状态';
         $scope.subTitle = '0代表完全不符合  100代表非常符合';
     }else if($scope.surveyName[0] === 'student'){
-        $scope.title = '请对下面一些描述是否符合你自身打分，分值越高代表越符合，没有对错之分请如实回答！';
+        $scope.title = '请就下列各题选择一个最符合你近3个月情况的答案，无所谓对错, 请如实回答。';
         $scope.subTitle = '0代表完全不符合 100代表完全符合';
     }else if($scope.surveyName[0] === 'lesshealth'){
         $scope.title = '请您仔细回忆自己在最近3个月内是否出现下列情况。无所谓对错, 请如实回答。';
         $scope.subTitle = '0代表从来没有这种情况 100代表经常出现这种情况';
     }else if($scope.surveyName[0] === 'helpother'){
-        $scope.title = '请就下列各题选择一个最符合你近3个月情况的答案，无所谓对错, 请如实回答。';
+        $scope.title = '请对下面一些描述是否符合你自身打分，分值越高代表越符合，没有对错之分请如实回答！';
         $scope.subTitle = '0代表没有经历过或虽有经历并无压力；100代表有很大的压力 向右滑动数字越大代表压力越大';
     }
 

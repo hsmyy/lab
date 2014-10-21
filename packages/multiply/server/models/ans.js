@@ -57,7 +57,7 @@ var AnsSchema = new Schema({
     },
     'profile' : {
         type : {
-            'name' : String,
+            'year' : String,
             'sex' : String,
             'height' : String,
             'weight' : String

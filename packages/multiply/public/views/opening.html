@@ -2,7 +2,9 @@
 <div ng-controller="OpeningController">
     <div ng-show="step == 1">
         <div class="body">
-
+            <div class="caption">
+                <div class="alert-danger">{{textAlert}}</div>
+            </div>
         </div>
         <div class="text-center">
             <hr>
@@ -15,9 +17,9 @@
             <hr/>
             <div class="form-horizontal">
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">姓名</label>
+                    <label class="col-sm-4 control-label">年龄</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" ng-model="profile.name">
+                        <input type="text" class="form-control" ng-model="profile.year">
                     </div>
                 </div>
                 <div class="form-group">

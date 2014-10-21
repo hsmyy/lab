@@ -41,16 +41,16 @@ db.forms.insert({'ques':'当众出丑',type:'student'});
 db.forms.insert({'ques':'被人当众指责',type:'student'});
 
 
-db.forms.insert({'ques':'近一月来有疲乏无力，很累的感觉','type':'lesshealth'});
+db.forms.insert({'ques':'近三月来有疲乏无力，很累的感觉','type':'lesshealth'});
 db.forms.insert({'ques':'疲乏在休息后不能够得到缓解','type':'lesshealth'});
 db.forms.insert({'ques':'在休息日或长假时，感到累，只想休息不想动','type':'lesshealth'});
 db.forms.insert({'ques':'压力大的时候会感到特别累','type':'lesshealth'});
-db.forms.insert({'ques':'近一月来,胃不舒服','type':'lesshealth'});
+db.forms.insert({'ques':'近三月来,胃不舒服','type':'lesshealth'});
 
-db.forms.insert({'ques':'近一个月来,持续有饱胀的感觉','type':'lesshealth'});
+db.forms.insert({'ques':'近三个月来,持续有饱胀的感觉','type':'lesshealth'});
 db.forms.insert({'ques':'胃部感到怕冷','type':'lesshealth'});
-db.forms.insert({'ques':'近一月来,入睡困难','type':'lesshealth'});
-db.forms.insert({'ques':'近一月来,夜间睡着后易醒，且醒后难以再入睡','type':'lesshealth'});
+db.forms.insert({'ques':'近三月来,入睡困难','type':'lesshealth'});
+db.forms.insert({'ques':'近三月来,夜间睡着后易醒，且醒后难以再入睡','type':'lesshealth'});
 db.forms.insert({'ques':'容易感冒','type':'lesshealth'});
 
 db.forms.insert({'ques':'感冒后好得很慢','type':'lesshealth'});
@@ -71,8 +71,8 @@ db.forms.insert({'ques':'头痛','type':'lesshealth'});
 db.forms.insert({'ques':'颈部酸痛','type':'lesshealth'});
 db.forms.insert({'ques':'膝关节或脚后跟酸痛','type':'lesshealth'});
 
-db.forms.insert({'ques':'近一个月来，身体有疼痛','type':'lesshealth'});
-db.forms.insert({'ques':'近一个月来,有腰背疼痛','type':'lesshealth'});
+db.forms.insert({'ques':'近三个月来，身体有疼痛','type':'lesshealth'});
+db.forms.insert({'ques':'近三个月来,有腰背疼痛','type':'lesshealth'});
 db.forms.insert({'ques':'觉得疼痛妨碍您去做自己需要做的事情','type':'lesshealth'});
 db.forms.insert({'ques':'有排便困难的感觉','type':'lesshealth'});
 db.forms.insert({'ques':'有孤独感','type':'lesshealth'});

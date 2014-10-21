@@ -6,9 +6,12 @@ angular.module('mean.multiply').controller('OpeningController', ['$scope','Globa
     function ($scope,Global, dataService) {
     $scope.global = Global;
     $scope.step = 1;
-
+    console.log($scope.global);
+    if($scope.global.user.roles == undefined){
+        $scope.textAlert = '请刷新页面后再进行实验，谢谢合作！';
+    }
     $scope.profile = {
-        'name' : '',
+        'year' : '',
         'sex' : 'man',
         'height' : '',
         'weight' : ''
@@ -18,7 +21,6 @@ angular.module('mean.multiply').controller('OpeningController', ['$scope','Globa
         if($scope.step < 2){
             $scope.step += 1;
         }else{
-            console.log($scope.profile);
             dataService.setData('profile', angular.copy($scope.profile));
             $scope.$emit('set-phase','survey0');
         }
