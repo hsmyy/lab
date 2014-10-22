@@ -29,7 +29,9 @@ angular.module('mean.multiply').controller('DescController',
             $scope.ques = qizzes[1];
         }
 
-        $scope.ans = '';
+        $scope.ans= {
+            'desc' : ''
+        };
 
         $scope.startDesc = function(){
             $scope.step = 2;
@@ -39,9 +41,10 @@ angular.module('mean.multiply').controller('DescController',
         };
 
         $scope.saveAndNext = function () {
-            DataService.setData('desc-answer', $scope.ans);
+            DataService.setData('desc-answer', angular.copy($scope.ans.desc));
             //$scope.$emit('set-phase', 'survey');
             $scope.$emit('set-phase', 'tuoye2');
+//            $scope.$emit('set-phase', 'closing');
         };
     }
 ]);
