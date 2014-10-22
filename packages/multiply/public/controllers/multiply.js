@@ -39,7 +39,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                 $('#mulTestTimer')[0].start();
             }
             $scope.mulIter += 1;
-            if ($scope.mulIter + 1 < $scope.testNumber) {
+            if ($scope.mulIter + 1 <= $scope.testNumber) {
                 $scope.mulCur = mulQues.random($scope.firstmin, $scope.firstmax, $scope.secondmin, $scope.secondmax);
             } else {
                 $scope.duration = parseInt(timer.tok() / 3);

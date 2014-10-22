@@ -23,6 +23,7 @@ angular.module('mean.multiply').controller('OpeningController',
         }else{
             dataService.setData('profile', angular.copy($scope.profile));
             $scope.$emit('set-phase','survey0');
+//            $scope.$emit('set-phase','closing');
         }
     };
 }]);

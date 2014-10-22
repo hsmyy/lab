@@ -30,16 +30,6 @@ angular.module('mean.multiply').controller('WordController',
     $http.get('multiply/words/' + type).success(function (data) {
         $scope.wordSet = data;
     }).error(function (data, status) {
-        $scope.wordSet = [
-            {
-                'ques': '大妈摔倒了你扶不扶',
-                'res': true
-            },
-            {
-                'ques': '大妈摔倒了你扶不扶',
-                'res': false
-            }
-        ];
     });
 
     $scope.wordCur = -1;
@@ -59,9 +49,7 @@ angular.module('mean.multiply').controller('WordController',
         $scope.wordCur += 1;
 
         if ($scope.wordCur === $scope.wordSet.length) {
-//            $scope.step = 3;
             $scope.wordCur = 0;
-            return;
         }
 
         $timeout(function () {

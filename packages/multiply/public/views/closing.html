@@ -6,8 +6,18 @@
             </div>
         </div>
         <div class="text-center">
-            <button class="btn btn-default" ng-click="saveAndNext('true')">是</button>
-            <button class="btn btn-default" ng-click="saveAndNext('false')">否</button>
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-default btn-lg" ng-click="saveAndNext('true')">是</button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-default btn-lg" ng-click="saveAndNext('false')">否</button>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
         </div>
     </div>
     <div ng-if="step == 2">
