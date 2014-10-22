@@ -96,7 +96,6 @@ db.forms.insert({'ques':'日常生活中感觉到不安全','type':'lesshealth'}
 db.forms.insert({'ques':'感到对自己的未来没有信心','type':'lesshealth'});
 
 db.forms.insert({'ques':'对自己目前学习、生活不适应','type':'lesshealth'});
-db.forms.insert({'ques':'觉得自己做事情的效率较低','type':'lesshealth'});
 db.forms.insert({'ques':'感到对自己的人际关系不满意','type':'lesshealth'});
 
 db.forms.insert({'ques':'有他人在场时，我会竭尽全力帮助别人','type':'helpother'});
