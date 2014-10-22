@@ -13,24 +13,6 @@ mongoose.connect(config.db);
 
 var User = mongoose.model('User');
 
-var users = [];
-users.push({
-        'name' : 'a101',
-        'roles' : ['authenticated','A1']
-    });
-users.push({
-        'name' : 'a201',
-        'roles' : ['authenticated','A2']
-    });
-users.push({
-        'name' : 'b101',
-        'roles' : ['authenticated','B1']
-    });
-users.push({
-        'name' : 'b201',
-        'roles' : ['authenticated','B2']
-    });
-
 function save(oldUser){
     var user = new User();
     user.name = oldUser.name;
@@ -48,6 +30,25 @@ function save(oldUser){
     });
 }
 
-for(var i = 0,n = users.length; i < n; i += 1){
-    save(users[i]);
+var type = ['a1','a2','b1','b2'];
+var roles = [
+    ['authenticated','A1'],
+    ['authenticated','A2'],
+    ['authenticated','B1'],
+    ['authenticated','B2']
+];
+
+for(var i = 0, n = type.length; i < n; i+=1){
+    for(var j = 1; j <= 9; j+=1){
+        for(var k = 1; k <= 9; k += 1){
+            var id = type[i] + '0' + j + '0' + k;
+            console.log(id);
+            var user = {
+                'name' : id,
+                'roles' : roles[i]
+            };
+            save(user);
+        }
+    }
 }
+

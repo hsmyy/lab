@@ -32,7 +32,7 @@ angular.module('mean.multiply').controller('WordController',
     }).error(function (data, status) {
     });
 
-    $scope.wordCur = -1;
+    $scope.wordCur = 0;
     $scope.wordAnswer = [];
     $scope.wordAttention = 0;
     $scope.startWord = function () {
@@ -46,11 +46,12 @@ angular.module('mean.multiply').controller('WordController',
 
     function timerWord() {
         $scope.wordAttention = 1;
-        $scope.wordCur += 1;
-
-        if ($scope.wordCur === $scope.wordSet.length) {
-            $scope.wordCur = 0;
-        }
+//        $scope.wordCur += 1;
+//
+//        if ($scope.wordCur === $scope.wordSet.length) {
+//            $scope.wordCur = 0;
+//        }
+        $scope.wordCur = parseInt(Math.random() * $scope.wordSet.length);
 
         $timeout(function () {
             $scope.wordAttention = 2;
