@@ -66,6 +66,10 @@ var AnsSchema = new Schema({
             'height' : String,
             'weight' : String
         }
+    },
+    'decision' : {
+        type : String,
+        required : false
     }
 });
 

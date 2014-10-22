@@ -2,13 +2,12 @@
     <div ng-if="step == 1">
         <div class="body">
             <div class="caption">
-                <h3>为了获得更好的实验结果，我们计划会在3天后进行该实验的后续实验</h3>
-                <h3>请问您是否愿意参加？</h3>
+                <h3>{{text}}</h3>
             </div>
         </div>
         <div class="text-center">
-            <button class="btn btn-default" ng-click="saveAndNext('true')">欣然同意</button>
-            <button class="btn btn-default" ng-click="saveAndNext('false')">断然拒绝</button>
+            <button class="btn btn-default" ng-click="saveAndNext('true')">是</button>
+            <button class="btn btn-default" ng-click="saveAndNext('false')">否</button>
         </div>
     </div>
     <div ng-if="step == 2">
