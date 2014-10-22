@@ -23,7 +23,7 @@ angular.module('mean.multiply').controller('TuoyeController',
         $scope.onTimeUp = function(){
 
             $('#alertPlayer').trigger('play');
-            alert('时间到，将棉条放回' + $scope.id + '号管盖好放入盒中，点击“确定”');
+            alert('时间到，将棉条放回' + $scope.id + '号管盖好放入袋中，点击“确定”');
 
             $scope.$apply(function(){
                 var id = parseInt($scope.id);

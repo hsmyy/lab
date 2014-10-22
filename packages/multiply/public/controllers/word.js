@@ -59,7 +59,8 @@ angular.module('mean.multiply').controller('WordController',
         $scope.wordCur += 1;
 
         if ($scope.wordCur === $scope.wordSet.length) {
-            $scope.step = 3;
+//            $scope.step = 3;
+            $scope.wordCur = 0;
             return;
         }
 

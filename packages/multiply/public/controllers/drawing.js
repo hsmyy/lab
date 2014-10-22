@@ -34,7 +34,7 @@ angular.module('mean.multiply').controller('DrawingController',
 
     $scope.onTuoyeTimeUp = function(id){
         $('#alertPlayer').trigger('play');
-        alert('时间到，将棉条放回'+id+'号管盖好放入盒中，点击“确定”');
+        alert('时间到，将棉条放回'+id+'号管盖好放入袋中，点击“确定”');
         $scope.$apply(function(){
             $scope.command = 2;
         });
