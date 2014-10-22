@@ -20,6 +20,6 @@ angular.module('mean.multiply').controller('ClosingController',
                 $scope.step = 2;
                 DataService.setData('decision', decision);
                 DataService.send($scope.global.user.username);
-            }
+            };
         }
     ]);

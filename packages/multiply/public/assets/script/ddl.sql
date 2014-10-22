@@ -30,7 +30,7 @@ db.forms.insert({'ques':'考试压力',type:'student'});
 
 db.forms.insert({'ques':'同学间的竞争',type:'student'});
 db.forms.insert({'ques':'学习效率低',type:'student'});
-db.forms.insert({'ques':'每学期末考试成绩排名',type:'student'});
+db.forms.insert({'ques':'每学期期末考试成绩排名',type:'student'});
 db.forms.insert({'ques':'完成课业有困难',type:'student'});
 db.forms.insert({'ques':'有些课程作业太多',type:'student'});
 
@@ -93,11 +93,11 @@ db.forms.insert({'ques':'对自己今后的工作.生活感到担心','type':'le
 db.forms.insert({'ques':'对所在的学校或学习的专业不满意','type':'lesshealth'});
 db.forms.insert({'ques':'觉得自己做事情的效率较低','type':'lesshealth'});
 db.forms.insert({'ques':'日常生活中感觉到不安全','type':'lesshealth'});
-db.forms.insert({'ques':'感到对自己的未来没有有信心','type':'lesshealth'});
+db.forms.insert({'ques':'感到对自己的未来没有信心','type':'lesshealth'});
 
 db.forms.insert({'ques':'对自己目前学习、生活不适应','type':'lesshealth'});
 db.forms.insert({'ques':'觉得自己做事情的效率较低','type':'lesshealth'});
-db.forms.insert({'ques':'感到对自己的人际关系满不满意','type':'lesshealth'});
+db.forms.insert({'ques':'感到对自己的人际关系不满意','type':'lesshealth'});
 
 db.forms.insert({'ques':'有他人在场时，我会竭尽全力帮助别人','type':'helpother'});
 db.forms.insert({'ques':'对我来说最大的成就感是给那些非常痛苦的人以安慰','type':'helpother'});
@@ -125,7 +125,7 @@ db.forms.insert({'ques':'我认为在当事人不知道的情况下给予帮助�
 
 db.forms.insert({'ques':'在受到大家情绪感染的情况下，我想要去帮助那些有困难的人','type':'helpother'});
 db.forms.insert({'ques':'我常在别人不知道的情况下做些捐助，因为这样让我感觉很好','type':'helpother'});
-db.forms.insert({'ques':'我帮助别人不是为了将来他们相应的同报我','type':'helpother'});
+db.forms.insert({'ques':'我帮助别人不是为了将来他们相应的回报我','type':'helpother'});
 db.forms.insert({'ques':'当别人提出要我帮忙时，我会尽我所能的帮助他们','type':'helpother'});
 db.forms.insert({'ques':'我经常帮助别人，即使从中得不到任何好处','type':'helpother'});
 db.forms.insert({'ques':'当别人心情很不好的时候，我常常帮助他们','type':'helpother'});
