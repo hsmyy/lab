@@ -28,7 +28,7 @@ angular.module('mean.multiply').controller('WordController',
     }
 
     $http.get('multiply/words/' + type).success(function (data) {
-        $scope.wordSet = data;
+        $scope.wordSet = shuffle(data);
     }).error(function (data, status) {
     });
 
@@ -43,6 +43,17 @@ angular.module('mean.multiply').controller('WordController',
             $scope.step = 3;
         }, $scope.wordTime * 1000);//TODO change as 120*1000 when in production
     };
+
+    function shuffle(o){ //v1.0
+        for(var j, x, i = o.length; i; ){
+            i -= 1;
+            j = Math.floor(Math.random() * i);
+            x = o[i];
+            o[i] = o[j];
+            o[j] = x;
+        }
+        return o;
+    }
 
     function timerWord() {
         $scope.wordAttention = 1;
