@@ -105,8 +105,8 @@ Ans.find('',function(err, dataset){
         }else{
             convertData.desc = '';
         }
-        convertData.mulAns = data['multiply-answer']['num'];
-        convertData.mulRight = data['multiply-answer']['result'];
+        convertData.mulAns = data['multiply-answer'].num;
+        convertData.mulRight = data['multiply-answer'].result;
         if(data['word-answer'] !== undefined){
             var count = 0;
             for(var j = 0, m = data['word-answer'].length; j < m; j += 1){

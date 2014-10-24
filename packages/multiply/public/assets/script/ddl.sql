@@ -134,41 +134,93 @@ db.words.insert({'ques':'帮忙','type':'help','res': true});
 db.words.insert({'ques':'慈缮','type':'help','res': false});
 db.words.insert({'ques':'助人','type':'help','res': true});
 db.words.insert({'ques':'利他','type':'help','res': true});
+
 db.words.insert({'ques':'绢助','type':'help','res': false});
 db.words.insert({'ques':'爱心','type':'help','res': true});
 db.words.insert({'ques':'同情','type':'help','res': true});
 db.words.insert({'ques':'秦献','type':'help','res': false});
 db.words.insert({'ques':'友善','type':'help','res': true});
+
 db.words.insert({'ques':'善心','type':'help','res': true});
 db.words.insert({'ques':'慷概','type':'help','res': false});
 db.words.insert({'ques':'付出','type':'help','res': true});
 db.words.insert({'ques':'援助','type':'help','res': true});
 db.words.insert({'ques':'伶悯','type':'help','res': false});
+
 db.words.insert({'ques':'仁慈','type':'help','res': true});
 db.words.insert({'ques':'热心','type':'help','res': true});
 db.words.insert({'ques':'救侪','type':'help','res': false});
 db.words.insert({'ques':'协助','type':'help','res': true});
+db.words.insert({'ques':'爱必','type':'help','res': false});
+
 db.words.insert({'ques':'公益','type':'help','res': true});
 db.words.insert({'ques':'帮肋','type':'help','res': false});
+db.words.insert({'ques':'奉献','type':'help','res': true});
+db.words.insert({'ques':'慈善','type':'help','res': true});
+db.words.insert({'ques':'助入','type':'help','res': false});
+
+db.words.insert({'ques':'捐助','type':'help','res': true});
+db.words.insert({'ques':'给予','type':'help','res': true});
+db.words.insert({'ques':'帮亡','type':'help','res': false});
+db.words.insert({'ques':'有善','type':'help','res': false});
+db.words.insert({'ques':'慷慨','type':'help','res': true});
+
+db.words.insert({'ques':'忖出','type':'help','res': false});
+db.words.insert({'ques':'媛助','type':'help','res': false});
+db.words.insert({'ques':'怜悯','type':'help','res': true});
+db.words.insert({'ques':'人慈','type':'help','res': false});
+db.words.insert({'ques':'救济','type':'help','res': true});
+
+db.words.insert({'ques':'关爱','type':'help','res': true});
+db.words.insert({'ques':'搏爱','type':'help','res': false});
+db.words.insert({'ques':'友爱','type':'help','res': true});
+db.words.insert({'ques':'善良','type':'help','res': true});
+db.words.insert({'ques':'积德','type':'help','res': true});
 
 db.words.insert({'ques':'交通','type':'normal','res': true});
 db.words.insert({'ques':'行走','type':'normal','res': true});
 db.words.insert({'ques':'荼叶','type':'normal','res': false});
 db.words.insert({'ques':'结果','type':'normal','res': true});
 db.words.insert({'ques':'产生','type':'normal','res': true});
+
 db.words.insert({'ques':'挑跃','type':'normal','res': false});
 db.words.insert({'ques':'纸张','type':'normal','res': true});
-db.words.insert({'ques':'信息','type':'normal','res': true});
+db.words.insert({'ques':'腊烛','type':'normal','res': false});
 db.words.insert({'ques':'水壷','type':'normal','res': false});
 db.words.insert({'ques':'说明','type':'normal','res': true});
+
 db.words.insert({'ques':'出现','type':'normal','res': true});
 db.words.insert({'ques':'游咏','type':'normal','res': false});
-db.words.insert({'ques':'杂志','type':'normal','res': true});
+db.words.insert({'ques':'坐镇','type':'normal','res': true});
 db.words.insert({'ques':'印刷','type':'normal','res': true});
 db.words.insert({'ques':'地秩','type':'normal','res': false});
-db.words.insert({'ques':'设计','type':'normal','res': true});
+
+db.words.insert({'ques':'凭添','type':'normal','res': true});
 db.words.insert({'ques':'中间','type':'normal','res': true});
 db.words.insert({'ques':'按装','type':'normal','res': false});
 db.words.insert({'ques':'无色','type':'normal','res': true});
 db.words.insert({'ques':'报告','type':'normal','res': true});
+
 db.words.insert({'ques':'迁徒','type':'normal','res': false});
+db.words.insert({'ques':'交涌','type':'normal','res': false});
+db.words.insert({'ques':'茶叶','type':'normal','res': true});
+db.words.insert({'ques':'跳跃','type':'normal','res': true});
+db.words.insert({'ques':'青睐','type':'normal','res': true});
+
+db.words.insert({'ques':'游泳','type':'normal','res': true});
+db.words.insert({'ques':'设什','type':'normal','res': false});
+db.words.insert({'ques':'安装','type':'normal','res': true});
+db.words.insert({'ques':'赧告','type':'normal','res': false});
+db.words.insert({'ques':'水壶','type':'normal','res': true});
+
+db.words.insert({'ques':'既使','type':'normal','res': true});
+db.words.insert({'ques':'信息','type':'normal','res': true});
+db.words.insert({'ques':'亲睐','type':'normal','res': false});
+db.words.insert({'ques':'出见','type':'normal','res': true});
+db.words.insert({'ques':'弦律','type':'normal','res': false});
+
+db.words.insert({'ques':'坐阵','type':'normal','res': false});
+db.words.insert({'ques':'杂志','type':'normal','res': true});
+db.words.insert({'ques':'九州','type':'normal','res': false});
+db.words.insert({'ques':'设计','type':'normal','res': true});
+db.words.insert({'ques':'平添','type':'normal','res': false});

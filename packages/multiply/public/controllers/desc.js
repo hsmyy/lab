@@ -42,8 +42,8 @@ angular.module('mean.multiply').controller('DescController',
 
         $scope.saveAndNext = function () {
             DataService.setData('desc-answer', angular.copy($scope.ans.desc));
-            //$scope.$emit('set-phase', 'survey');
-            $scope.$emit('set-phase', 'tuoye2');
+            $scope.$emit('set-phase', 'survey');
+            //$scope.$emit('set-phase', 'tuoye2');
 //            $scope.$emit('set-phase', 'closing');
         };
     }
