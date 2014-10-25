@@ -18,6 +18,9 @@ angular.module('mean.multiply').controller('SurveyController',
     $http.get('multiply/forms/' + $scope.surveyName[0]).success(function (data) {
         $scope.questions = data;
         $scope.answers = new Array($scope.questions.length);
+        for(var i = 0,n = $scope.answers.length; i < n; i += 1){
+            $scope.answers[i] = 5000;
+        }
         $scope.pageNumber = Math.floor(($scope.questions.length - 1) / $scope.pageSize) + 1;
     }).error(function (data, status) {
     });
