@@ -1,0 +1,70 @@
+<div ng-controller="TestController" class="card well">
+
+    <audio id="alertPlayer"><source src="/multiply/assets/mp3/alert.mp3" autoplay="true" loop="true" muted="false"></audio>
+
+    <div ng-if="!phase || phase == 'standby'">
+        <div ng-include="'multiply/views/opening.html'"></div>
+    </div>
+
+    <div ng-if="phase == 'survey0'">
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['pressure', 'survey0-answer']"></div>
+    </div>
+
+    <!-- tuoye1 -->
+    <div ng-if="phase == 'tuoye1'">
+        <div ng-include="'multiply/views/tuoye.html'" ng-init="id='1'"></div>
+    </div>
+
+    <!-- First test: word test -->
+    <div ng-if="phase == 'word'">
+        <div ng-include="'multiply/views/word.html'"></div>
+    </div>
+
+    <div ng-if="phase == 'desc'">
+        <div ng-include="'multiply/views/desc.html'"></div>
+    </div>
+
+    <!-- tuoye 2-->
+    <div ng-if="phase == 'tuoye2'">
+        <div ng-include="'multiply/views/tuoye.html'" ng-init="id='2'"></div>
+    </div>
+
+    <!-- Second test: survey -->
+    <div ng-if="phase == 'survey'">
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['pressure','survey1-answer']"></div>
+    </div>
+
+    <!-- Third test: mathematical test -->
+    <div ng-if="phase == 'multiply'">
+        <div ng-include="'multiply/views/multiply.html'"></div>
+    </div>
+
+    <!-- tuoye 3-->
+    <div ng-if="phase == 'tuoye3'">
+        <div ng-include="'multiply/views/tuoye.html'" ng-init="id='3'"></div>
+    </div>
+
+    <div ng-if="phase == 'survey2'">
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['pressure','survey2-answer']"></div>
+    </div>
+
+    <div ng-if="phase == 'drawing'">
+        <div ng-include="'multiply/views/drawing.html'"></div>
+    </div>
+
+    <div ng-if="phase == 'survey-student'">
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['student', 'student']"></div>
+    </div>
+
+    <div ng-if="phase == 'survey-lesshealth'">
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['lesshealth', 'lesshealth']"></div>
+    </div>
+
+    <div ng-if="phase == 'survey5'">
+        <div ng-include="'multiply/views/survey.html'" ng-init="surveyName=['helpother', 'helpother']"></div>
+    </div>
+
+    <div ng-if="phase == 'closing'">
+        <div ng-include="'multiply/views/closing.html'"></div>
+    </div>
+</div>
