@@ -13,6 +13,7 @@ angular.module('mean.multiply').factory('Config', [function(){
 //        multiple : 30 * 1,// 10 * 60
         //real
         word : 60 * 2,
+        desc : 60 * 4,
         wordPrompt : 1000,
         drawing : 10 * 60,
         tuoye : 1 * 60,
