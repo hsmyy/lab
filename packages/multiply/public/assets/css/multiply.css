@@ -12,12 +12,12 @@
     margin-right: auto;
     min-width: 500px;
     max-width: 980px;
-    height: 490px;
+    height: 630px;
 
 }
 
 .body{
-    height: 360px;
+    height: 480px;
     text-align: center;
     overflow-y: hidden;
     overflow-x: hidden;

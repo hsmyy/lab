@@ -10,3 +10,9 @@ exports.get = function(type, callback){
         callback(err, forms);
     });
 };
+
+exports.getAll = function(type, callback){
+    Form.find().exec(function(err, forms){
+        callback(err, forms);
+    });
+};

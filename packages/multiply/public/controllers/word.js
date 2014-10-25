@@ -11,27 +11,10 @@ angular.module('mean.multiply').controller('WordController',
     $scope.wordTime = config.word;
     $scope.wordPrompt = config.wordPrompt;
 
-    var type;
+
     $scope.global = Account.load();
 
-    $scope.isHelp = function(){
-        if($scope.global.user.roles.indexOf('A1') !== -1){
-            return true;
-        }else{
-            return false;
-        }
-    };
-    if($scope.isHelp()){
-        type = 'help';
-    }else{
-        type = 'normal';
-    }
-
-    $http.get('multiply/words/' + type).success(function (data) {
-        $scope.wordSet = shuffle(data);
-    }).error(function (data, status) {
-    });
-
+    $scope.wordSet = DataService.getData('word-ques');
     $scope.wordCur = 0;
     $scope.wordAnswer = [];
     $scope.wordAttention = 0;
@@ -44,16 +27,7 @@ angular.module('mean.multiply').controller('WordController',
         }, $scope.wordTime * 1000);//TODO change as 120*1000 when in production
     };
 
-    function shuffle(o){ //v1.0
-        for(var j, x, i = o.length; i; ){
-            i -= 1;
-            j = Math.floor(Math.random() * i);
-            x = o[i];
-            o[i] = o[j];
-            o[j] = x;
-        }
-        return o;
-    }
+
 
     function timerWord() {
         $scope.wordAttention = 1;

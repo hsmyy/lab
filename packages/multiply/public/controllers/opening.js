@@ -3,8 +3,8 @@
  */
 'use strict';
 angular.module('mean.multiply').controller('OpeningController',
-    ['$scope','Account','DataService',
-    function ($scope,Account, dataService) {
+    ['$scope','Account','DataService', '$http',
+    function ($scope,Account, dataService, $http) {
     $scope.global = Account.load();
     $scope.step = 1;
     if($scope.global.user.roles === undefined){
@@ -26,4 +26,41 @@ angular.module('mean.multiply').controller('OpeningController',
 //            $scope.$emit('set-phase','closing');
         }
     };
+    var type;
+    $scope.isHelp = function(){
+        if($scope.global.user.roles.indexOf('A1') !== -1){
+            return true;
+        }else{
+            return false;
+        }
+    };
+    if($scope.isHelp()){
+        type = 'help';
+    }else{
+        type = 'normal';
+    }
+
+    //load word
+    $http.get('multiply/words/' + type).success(function (data) {
+        dataService.setData('word-ques', shuffle(data));
+    }).error(function (data, status) {
+        console.log(status);
+    });
+
+    $http.get('multiply/formsall').success(function(data){
+        dataService.setData('form-all', data);
+    }).error(function(data, status){
+        console.log(status);
+    });
+
+        function shuffle(o){ //v1.0
+            for(var j, x, i = o.length; i; ){
+                i -= 1;
+                j = Math.floor(Math.random() * i);
+                x = o[i];
+                o[i] = o[j];
+                o[j] = x;
+            }
+            return o;
+        }
 }]);

@@ -65,6 +65,18 @@ module.exports = function(Multiply, app, auth, database) {
       });
   });
 
+    app.get('/multiply/formsall', function(req, res, next){
+        FormService.getAll(req.param('formType'),function(err, forms){
+            if(err){
+                res.render('error',{
+                    status : 500
+                });
+            }else{
+                res.jsonp(forms);
+            }
+        });
+    });
+
   app.post('/multiply/ans', function(req, res, next){
       AnsService.save(req.body, function(err){
           if(err){

@@ -26,7 +26,7 @@ Access.register(function(database) {
   });
 
   Access.passport = passport;
-  Access.middleware = auth;
+  //Access.middleware = auth;
 
   return Access;
 });
