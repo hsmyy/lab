@@ -21,6 +21,11 @@ angular.module('mean.multiply').controller('OpeningController',
         if($scope.step < 2){
             $scope.step += 1;
         }else{
+            /*global $:false */
+            if($('.error.ng-hide').length < 12){
+                alert('填写有错误，请检查');
+                return;
+            }
             dataService.setData('profile', angular.copy($scope.profile));
             $scope.$emit('set-phase','survey0');
 //            $scope.$emit('set-phase','closing');
