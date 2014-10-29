@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
 var Schema = mongoose.Schema;
 var json2csv = require('json2csv');
 var fs = require('fs');
+var Iconv = require('iconv').Iconv;
 
 mongoose.connect(config.db);
 
@@ -82,13 +83,13 @@ var Ans = mongoose.model('Ans', AnsSchema);
 
 function splitArray(data,convertData, attrKey){
     for(var j = 0,nn = data[attrKey].length; j < nn; j += 1){
-        convertData[attrKey + j] = data[attrKey][j] !== null ? data[attrKey][j] : 0;
+        convertData[attrKey + j] = data[attrKey][j] !== null ? data[attrKey][j] / 100 : 0;
     }
 }
 
 Ans.find('',function(err, dataset){
     //convert data
-    console.log('dataset length:' + dataset.length);
+    //console.log('dataset length:' + dataset.length);
     var converted = [];
     for(var i = 0,n = dataset.length; i < n; i += 1){
         var convertData = {};
@@ -97,7 +98,7 @@ Ans.find('',function(err, dataset){
         convertData.userid = data.userid;
         convertData.decision = data.decision;
         convertData.age = data.profile.year;
-        convertData.sex = data.profile.sex;
+        convertData.gender = data.profile.sex;
         convertData.height = data.profile.height;
         convertData.weight = data.profile.weight;
         if(data['desc-answer'] !== undefined){
@@ -129,7 +130,7 @@ Ans.find('',function(err, dataset){
         splitArray(data,convertData, 'survey-student-answer');
         splitArray(data,convertData, 'survey-lesshealth-answer');
         splitArray(data,convertData, 'survey5-answer');
-        splitArray(data,convertData, 'survey6-answer');
+//        splitArray(data,convertData, 'survey6-answer');
         converted.push(convertData);
     }
     var keys = [];
@@ -141,12 +142,14 @@ Ans.find('',function(err, dataset){
                 keys.push(key);
             }
         }
+        var iconv = new Iconv('UTF-8','EUC-CN');
         //json2csv
         json2csv({
             data : converted,
             fields : keys
         },function(err,csv){
-            fs.writeFile('file.csv', csv, function(err){
+            console.log(csv);
+            fs.writeFile('file.csv', iconv.convert(csv), function(err){
                 if(err) throw err;
                 console.log('file saved!');
             });

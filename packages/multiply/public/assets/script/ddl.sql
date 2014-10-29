@@ -1,8 +1,8 @@
-db.forms.insert([{'ques': '感到紧张和焦虑','type': 'pressure'}])
-db.forms.insert([{'ques': '感到心跳很快，身体不太舒服','type': 'pressure'}])
-db.forms.insert([{'ques': '想马上离开这间实验室','type': 'pressure'}])
-db.forms.insert([{'ques': '感到心烦意乱','type': 'pressure'}])
-db.forms.insert([{'ques': '能控制自己的情绪，保持平和','type': 'pressure'}])
+db.forms.insert([{'ques': '感到紧张','type': 'pressure'}])
+db.forms.insert([{'ques': '感到心跳加快','type': 'pressure'}])
+db.forms.insert([{'ques': '想尽快结束实验','type': 'pressure'}])
+db.forms.insert([{'ques': '感到心情烦躁','type': 'pressure'}])
+db.forms.insert([{'ques': '能保持情绪平和','type': 'pressure'}])
 
 db.forms.insert({'ques':'渴望真(爱)情却得不到',type:'student'});
 db.forms.insert({'ques':'青春期成长',type:'student'});
