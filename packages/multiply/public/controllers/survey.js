@@ -88,8 +88,8 @@ angular.module('mean.multiply').controller('SurveyController',
             $scope.$emit('set-phase', 'drawing');
         }else if($scope.surveyName[1] === 'survey3-answer'){
             DataService.setData('survey3-answer', angular.copy($scope.answers));
-            //$scope.$emit('set-command',3);
-            $scope.$emit('set-step',4);
+            $scope.$emit('set-command',3);
+            //$scope.$emit('set-step',4);
         }else if($scope.surveyName[1] === 'student') {
             DataService.setData('survey-student-answer', angular.copy($scope.answers));
             $scope.$emit('set-phase', 'survey-lesshealth');

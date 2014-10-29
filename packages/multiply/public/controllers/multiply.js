@@ -138,7 +138,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                 'result' : $scope.result,
                 'num' : $scope.mulIter
             }));
-            $scope.$emit('set-phase', 'survey2');
-            //$scope.$emit('set-phase', 'tuoye3');
+            //$scope.$emit('set-phase', 'survey2');
+            $scope.$emit('set-phase', 'tuoye3');
         };
     }]);

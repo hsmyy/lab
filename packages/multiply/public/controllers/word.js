@@ -54,7 +54,7 @@ angular.module('mean.multiply').controller('WordController',
 
     $scope.saveAndNext = function () {
         DataService.setData('word-answer', angular.copy($scope.wordAnswer));
-        $scope.$emit('set-phase', 'survey');
-        //$scope.$emit('set-phase', 'tuoye2');
+        //$scope.$emit('set-phase', 'survey');
+        $scope.$emit('set-phase', 'tuoye2');
     };
 }]);
