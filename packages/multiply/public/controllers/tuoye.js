@@ -24,7 +24,7 @@ angular.module('mean.multiply').controller('TuoyeController',
 
             $('#alertPlayer').trigger('play');
             alert('时间到，将棉条放回' + $scope.id + '号管盖好放入袋中，点击“确定”');
-
+            console.log('[TUOYE]TuoYe Time out!');
             $scope.$apply(function(){
                 var id = parseInt($scope.id);
                 if(id === 1){

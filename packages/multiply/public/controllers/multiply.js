@@ -29,6 +29,7 @@ angular.module('mean.multiply').controller('MultiplyController',
             $scope.mulIter = -1;
             $scope.nextMulTest();
             timer.tik();
+            console.log('[MUL]Test Start');
         };
 
         $scope.nextMulTest = function (ans) {
@@ -51,6 +52,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                 if($scope.mulIter + 1 <= $scope.testNumber){
                     $scope.stage = 'cal';
                 }else{
+                    console.log('[MUL]Test Time up');
                     $scope.step += 1;
                 }
             });
@@ -72,6 +74,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                     $timeout.cancel(timerPromise);
                 }
                 //console.log($scope.result + ',' + $scope.mulIter);
+                console.log('[MUL]Normal Time up');
                 $scope.step += 1;
             }, 1000 * $scope.time);
         };
@@ -139,6 +142,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                 'num' : $scope.mulIter
             }));
             //$scope.$emit('set-phase', 'survey2');
+            console.log('[MUL]Go to TuoYe3');
             $scope.$emit('set-phase', 'tuoye3');
         };
     }]);

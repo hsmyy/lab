@@ -29,6 +29,7 @@ angular.module('mean.multiply').controller('SurveyController',
     var forms = DataService.getData('form-all');
     forms.sort(function(a,b){return a.order - b.order;});
     $scope.questions = [];
+    console.log('[SURVEY]Current Survey:' + $scope.surveyName[0]);
     for(var i = 0, n = forms.length; i < n; i += 1){
         if(forms[i].type === $scope.surveyName[0]){
             $scope.questions.push(forms[i]);
@@ -74,31 +75,40 @@ angular.module('mean.multiply').controller('SurveyController',
                 return;
             }
         }
+        console.log('[SURVEY]Survey Pass');
         if($scope.surveyName[1] === 'survey0-answer'){
             DataService.setData('survey0-answer', angular.copy($scope.answers));
             if($scope.global.user.roles.indexOf('A1') !== -1 || $scope.global.user.roles.indexOf('A2') !== -1){
+                console.log('[SURVEY]Go to WORD');
                 $scope.$emit('set-phase', 'word');
             }else{
+                console.log('[SURVEY]Go to DESC');
                 $scope.$emit('set-phase', 'desc');
             }
         }else if($scope.surveyName[1] === 'survey1-answer') {
             DataService.setData('survey1-answer', angular.copy($scope.answers));
+            console.log('[SURVEY]Go to MULTIPLY');
             $scope.$emit('set-phase', 'multiply');
         }else if($scope.surveyName[1] === 'survey2-answer'){
             DataService.setData('survey2-answer', angular.copy($scope.answers));
+            console.log('[SURVEY]Go to DRAWING');
             $scope.$emit('set-phase', 'drawing');
         }else if($scope.surveyName[1] === 'survey3-answer'){
             DataService.setData('survey3-answer', angular.copy($scope.answers));
+            console.log('[SURVEY]Go to 3rd part');
             $scope.$emit('set-command',3);
             //$scope.$emit('set-step',4);
         }else if($scope.surveyName[1] === 'student') {
             DataService.setData('survey-student-answer', angular.copy($scope.answers));
+            console.log('[SURVEY]Go to 亚健康');
             $scope.$emit('set-phase', 'survey-lesshealth');
         } else if($scope.surveyName[1] === 'lesshealth') {
             DataService.setData('survey-lesshealth-answer', angular.copy($scope.answers));
+            console.log('[SURVEY]Go to 助人');
             $scope.$emit('set-phase', 'survey5');
         } else if($scope.surveyName[1] === 'helpother') {
             DataService.setData('survey5-answer', angular.copy($scope.answers));
+            console.log('[SURVEY]Go to CLOSE');
             $scope.$emit('set-phase', 'closing');
         }
     };

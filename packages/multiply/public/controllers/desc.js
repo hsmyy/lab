@@ -37,12 +37,14 @@ angular.module('mean.multiply').controller('DescController',
             $scope.step = 2;
             $timeout(function(){
                 $scope.step = 3;
+                console.log('[DESC]DESC TIME OUT');
             }, $scope.time * 1000);
         };
 
         $scope.saveAndNext = function () {
             DataService.setData('desc-answer', angular.copy($scope.ans.desc));
             //$scope.$emit('set-phase', 'survey');
+            console.log('[DESC]Go to TuoYe2');
             $scope.$emit('set-phase', 'tuoye2');
 //            $scope.$emit('set-phase', 'closing');
         };

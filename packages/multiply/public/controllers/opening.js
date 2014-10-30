@@ -27,6 +27,7 @@ angular.module('mean.multiply').controller('OpeningController',
                 return;
             }
             dataService.setData('profile', angular.copy($scope.profile));
+            console.log('[OPEN]Profile Save,Go to Survey0');
             $scope.$emit('set-phase','survey0');
 //            $scope.$emit('set-phase','closing');
         }
@@ -48,12 +49,14 @@ angular.module('mean.multiply').controller('OpeningController',
     //load word
     $http.get('multiply/words/' + type).success(function (data) {
         dataService.setData('word-ques', shuffle(data));
+        console.log('[OPEN]Load Word Data');
     }).error(function (data, status) {
         console.log(status);
     });
 
     $http.get('multiply/formsall').success(function(data){
         dataService.setData('form-all', data);
+        console.log('[OPEN]Load Form Data');
     }).error(function(data, status){
         console.log(status);
     });

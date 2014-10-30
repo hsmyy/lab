@@ -24,6 +24,7 @@ angular.module('mean.multiply').controller('WordController',
         timerWord();
         $timeout(function () {
             $scope.step = 3;
+            console.log('[WORD]WORD TIME OUT');
         }, $scope.wordTime * 1000);//TODO change as 120*1000 when in production
     };
 
@@ -61,6 +62,7 @@ angular.module('mean.multiply').controller('WordController',
     $scope.saveAndNext = function () {
         DataService.setData('word-answer', angular.copy($scope.wordAnswer));
         //$scope.$emit('set-phase', 'survey');
+        console.log('[WORD]Go to TuoYe2');
         $scope.$emit('set-phase', 'tuoye2');
     };
 }]);

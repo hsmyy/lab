@@ -17,12 +17,14 @@ angular.module('mean.multiply').controller('ClosingController',
             }else{
                 $scope.step = 2;
                 DataService.send($scope.global.user.username);
+                console.log('[CLOSE]Save and Finish');
             }
 
             $scope.saveAndNext = function(decision){
                 $scope.step = 2;
                 DataService.setData('decision', decision);
                 DataService.send($scope.global.user.username);
+                console.log('[CLOSE]Save and Finish');
             };
         }
     ]);
