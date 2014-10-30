@@ -27,6 +27,7 @@ angular.module('mean.multiply').controller('SurveyController',
 
 
     var forms = DataService.getData('form-all');
+    forms.sort(function(a,b){return a.order - b.order;});
     $scope.questions = [];
     for(var i = 0, n = forms.length; i < n; i += 1){
         if(forms[i].type === $scope.surveyName[0]){

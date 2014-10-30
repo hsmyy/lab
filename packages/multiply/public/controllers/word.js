@@ -27,7 +27,13 @@ angular.module('mean.multiply').controller('WordController',
         }, $scope.wordTime * 1000);//TODO change as 120*1000 when in production
     };
 
-
+    $scope.isHelp = function(){
+        if($scope.global.user.roles.indexOf('A1') !== -1){
+            return true;
+        }else{
+            return false;
+        }
+    };
 
     function timerWord() {
         $scope.wordAttention = 1;
