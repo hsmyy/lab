@@ -64,7 +64,8 @@ var AnsSchema = new Schema({
             'year' : String,
             'sex' : String,
             'height' : String,
-            'weight' : String
+            'weight' : String,
+            'origin' : String
         }
     },
     'decision' : {

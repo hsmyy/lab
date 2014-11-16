@@ -38,6 +38,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-4 control-label">籍贯</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="origin" class="form-control" ng-model="profile.origin" min="140" max="200" required>
+                    </div>
+                    <span class="alert-danger error" ng-show="basicInfo.origin.$error.required">请务必填写</span>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-4 control-label">身高</label>
                     <div class="col-sm-4">
                         <input type="number" name="height" class="form-control" ng-model="profile.height" min="140" max="200" required>

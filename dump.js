@@ -8,7 +8,6 @@ var mongoose = require('mongoose'),
 var Schema = mongoose.Schema;
 var json2csv = require('json2csv');
 var fs = require('fs');
-var Iconv = require('iconv').Iconv;
 
 mongoose.connect(config.db);
 
@@ -101,6 +100,7 @@ Ans.find('',function(err, dataset){
         convertData.gender = data.profile.sex;
         convertData.height = data.profile.height;
         convertData.weight = data.profile.weight;
+        convertData.origin = data.profile.origin;
         if(data['desc-answer'] !== undefined){
             convertData.desc = data['desc-answer'];
         }else{
@@ -142,14 +142,14 @@ Ans.find('',function(err, dataset){
                 keys.push(key);
             }
         }
-        var iconv = new Iconv('UTF-8','EUC-CN');
+        //var iconv = new Iconv('UTF-8','EUC-CN');
         //json2csv
         json2csv({
             data : converted,
             fields : keys
         },function(err,csv){
             console.log(csv);
-            fs.writeFile('file.csv', iconv.convert(csv), function(err){
+            fs.writeFile('file.csv', /*iconv.convert(csv)*/csv, function(err){
                 if(err) throw err;
                 console.log('file saved!');
             });

@@ -14,7 +14,8 @@ angular.module('mean.multiply').controller('OpeningController',
         'year' : '',
         'sex' : 'man',
         'height' : '',
-        'weight' : ''
+        'weight' : '',
+        'origin' : ''
     };
 
     $scope.startTest = function () {
@@ -22,7 +23,7 @@ angular.module('mean.multiply').controller('OpeningController',
             $scope.step += 1;
         }else{
             /*global $:false */
-            if($('.error.ng-hide').length < 12){
+            if($('.error.ng-hide').length < 13){
                 alert('填写有错误，请检查');
                 return;
             }
