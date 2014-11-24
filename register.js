@@ -41,7 +41,7 @@ var roles = [
 for(var i = 0, n = type.length; i < n; i+=1){
     for(var j = 1; j <= 9; j+=1){
         for(var k = 1; k <= 9; k += 1){
-            var id = type[i] + '0' + j + '0' + k;
+            var id = type[i] + '2' + j + '0' + k;
             console.log(id);
             var user = {
                 'name' : id,
