@@ -11,6 +11,7 @@ angular.module('mean.multiply').factory('Config', [function(){
 //        drawing : 20 * 1,//10 * 60
 //        tuoye : 2 * 1,// 1 * 60
 //        multiple : 30 * 1,// 10 * 60
+//        desc: 10
         //real
         word : 60 * 2,
         desc : 60 * 8,

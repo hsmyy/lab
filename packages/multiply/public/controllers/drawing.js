@@ -22,7 +22,7 @@ angular.module('mean.multiply').controller('DrawingController',
         alert('时间到，请点击关闭本对话框并按接下来的提示操作。');
         $scope.$apply(function() {
             $scope.step += 1;
-            $scope.test = '开始';
+            $scope.text = '开始';
             $scope.wait = false;
             $scope.command = 1;
             console.log('[DRAW]Time out, Go to Step ' + $scope.step);
