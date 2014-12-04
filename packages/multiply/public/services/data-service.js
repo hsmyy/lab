@@ -14,6 +14,7 @@ Multiply.factory('DataService',[ '$http', function ($http) {
 
     function setData(key, value) {
         data[key] = value;
+        //TODO send partial data
     }
 
     function getData(key) {

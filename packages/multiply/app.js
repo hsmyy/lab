@@ -66,6 +66,7 @@ Multiply.register(function (app, auth, database) {
 //        menu: 'main'
 //    });
     Multiply.angularDependencies(['ui.slider', 'timer']);
+    Multiply.aggregateAsset('js','hack.js', {global:true});
     /**
      //Uncomment to use. Requires meanio@0.3.7 or above
      // Save settings with callback
