@@ -23,6 +23,7 @@ angular.module('mean.multiply').controller('MultiplyController',
         $scope.stage = 'cal';
 
         var timerPromise;
+        /*global $:false */
         $('#heartBeat').trigger('play');
         $scope.startMulTest = function () {
             $scope.step += 1;
@@ -38,7 +39,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                 $scope.last = judge($scope.mulCur, ans);
                 /*global $:false */
                 $scope.stage = 'ans';
-                /*global $:false */
+
                 $('#mulTestTimer')[0].start();
             }
             $scope.mulIter += 1;
