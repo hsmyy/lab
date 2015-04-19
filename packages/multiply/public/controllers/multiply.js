@@ -30,7 +30,6 @@ angular.module('mean.multiply').controller('MultiplyController',
             $scope.nextMulTest();
             timer.tik();
             console.log('[MUL]Test Start');
-            /*global $:false */
 
         };
 
@@ -39,6 +38,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                 $scope.last = judge($scope.mulCur, ans);
                 /*global $:false */
                 $scope.stage = 'ans';
+                /*global $:false */
                 $('#mulTestTimer')[0].start();
             }
             $scope.mulIter += 1;
