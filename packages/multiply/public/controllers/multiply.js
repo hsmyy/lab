@@ -47,6 +47,7 @@ angular.module('mean.multiply').controller('MultiplyController',
             } else {
                 $scope.duration = parseInt(timer.tok() / 3);
             }
+            $('#heartBeat').trigger('play');
         };
 
         $scope.onTestTimeUp = function(){
@@ -121,6 +122,7 @@ angular.module('mean.multiply').controller('MultiplyController',
             $scope.stage = 'ans';
             /*global $:false */
             $('#mulTimer')[0].start();
+            $('#heartBeat').trigger('play');
         };
 
         function changeDuration(correctUpdate) {
