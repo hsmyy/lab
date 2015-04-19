@@ -1,6 +1,8 @@
 <div ng-controller="TestController" class="card well">
 
-    <audio id="alertPlayer"><source src="/multiply/assets/mp3/alert.mp3" autoplay="true" loop="true" muted="false"></audio>
+    <audio id="alertPlayer"><source src="/multiply/assets/mp3/alert.mp3" autoplay="true" loop="loop" muted="false"></audio>
+    <audio id="heartBeat" src="multiply/assets/mp3/beat.mp3" loop="loop"></audio>
+    <audio id="yujia" src="multiply/assets/mp3/yujia.mp3"></audio>
 
     <div ng-if="!phase || phase == 'standby'">
         <div ng-include="'multiply/views/opening.html'"></div>

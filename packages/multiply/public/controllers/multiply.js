@@ -30,6 +30,8 @@ angular.module('mean.multiply').controller('MultiplyController',
             $scope.nextMulTest();
             timer.tik();
             console.log('[MUL]Test Start');
+            /*global $:false */
+            $('#heartBeat').trigger('play');
         };
 
         $scope.nextMulTest = function (ans) {
@@ -56,6 +58,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                     $scope.step += 1;
                 }
             });
+            $('#heartBeat').trigger('pause');
         };
 
         $scope.startMul = function () {
@@ -69,6 +72,7 @@ angular.module('mean.multiply').controller('MultiplyController',
             $scope.last = lastAns;
             $scope.stage = 'cal';
             timerPromise = $timeout($scope.nextMul, $scope.duration);
+            $('#heartBeat').trigger('play');
             $timeout(function () {
                 if (timerPromise !== undefined) {
                     $timeout.cancel(timerPromise);
@@ -84,6 +88,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                 $scope.stage = 'cal';
                 timerPromise = $timeout($scope.nextMul, $scope.duration);
             });
+            $('#heartBeat').trigger('pause');
         };
 
         $scope.nextMul = function (ans) {

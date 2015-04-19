@@ -8,7 +8,7 @@ var goto = function(place){
     var controller = angular.element('[ng-controller=TestController]');
     if(controller !== undefined){
         controller.scope().$apply(function(){
-            var phase = ''
+            var phase = '';
             if(place === 'word'){
                 phase = 'word';
             }else if(place === 'desc'){

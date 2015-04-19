@@ -3,13 +3,15 @@
  */
 'use strict';
 angular.module('mean.multiply').controller('OpeningController',
-    ['$scope','Account','DataService', '$http',
-    function ($scope,Account, dataService, $http) {
+    ['$scope','$timeout', 'Account','DataService', '$http', 'Config',
+    function ($scope, $timeout, Account, dataService, $http, config) {
     $scope.global = Account.load();
-    $scope.step = 1;
+    $scope.step = 0;
     if($scope.global.user.roles === undefined){
         $scope.textAlert = '请刷新页面后再进行实验，谢谢合作！';
     }
+    $scope.skipTime = config.introTime;
+    console.log('start intro:' + $scope.skipTime);
     $scope.profile = {
         'year' : '',
         'sex' : 'man',
@@ -17,12 +19,22 @@ angular.module('mean.multiply').controller('OpeningController',
         'weight' : '',
         'origin' : ''
     };
+    /*global $:false */
+    $('#yujia').trigger('play');
+    $timeout(function(){
+        console.log('skip over.');
+        $scope.step = 1;
+//        $scope.apply(function(){
+//            $scope.step = 1;
+//        });
+        $('#yujia').trigger('pause');
+    }, 1000 * $scope.skipTime);
 
     $scope.startTest = function () {
         if($scope.step < 2){
             $scope.step += 1;
         }else{
-            /*global $:false */
+
             if($('.error.ng-hide').length < 13){
                 alert('填写有错误，请检查');
                 return;

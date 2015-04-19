@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  db: 'mongodb://thu:thu@106.185.44.133/phycolab',
+  db: 'mongodb://106.185.44.133/phycolab',
   mongoose: {
     debug: true
   },
