@@ -85,6 +85,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                 //console.log($scope.result + ',' + $scope.mulIter);
                 console.log('[MUL]Normal Time up');
                 $scope.step += 1;
+                $('#heartBeat').trigger('pause');
             }, 1000 * $scope.time);
         };
 
@@ -155,7 +156,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                 'num' : $scope.mulIter
             }));
             //$scope.$emit('set-phase', 'survey2');
-            $('#heartBeat').trigger('pause');
+
             console.log('[MUL]Go to TuoYe3');
             $scope.$emit('set-phase', 'tuoye3');
         };
