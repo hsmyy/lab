@@ -23,7 +23,7 @@ angular.module('mean.multiply').controller('MultiplyController',
         $scope.stage = 'cal';
 
         var timerPromise;
-
+        $('#heartBeat').trigger('play');
         $scope.startMulTest = function () {
             $scope.step += 1;
             $scope.mulIter = -1;
@@ -31,7 +31,7 @@ angular.module('mean.multiply').controller('MultiplyController',
             timer.tik();
             console.log('[MUL]Test Start');
             /*global $:false */
-            $('#heartBeat').trigger('play');
+
         };
 
         $scope.nextMulTest = function (ans) {
@@ -47,7 +47,7 @@ angular.module('mean.multiply').controller('MultiplyController',
             } else {
                 $scope.duration = parseInt(timer.tok() / 3);
             }
-            $('#heartBeat').trigger('play');
+
             console.log('[MUL]Test Next');
         };
 
@@ -60,7 +60,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                     $scope.step += 1;
                 }
             });
-            $('#heartBeat').trigger('pause');
+
             console.log('[MUL]Test timeup');
         };
 
@@ -75,7 +75,7 @@ angular.module('mean.multiply').controller('MultiplyController',
             $scope.last = lastAns;
             $scope.stage = 'cal';
             timerPromise = $timeout($scope.nextMul, $scope.duration);
-            $('#heartBeat').trigger('play');
+
             console.log('[MUL]Normal Start');
             $timeout(function () {
                 if (timerPromise !== undefined) {
@@ -92,7 +92,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                 $scope.stage = 'cal';
                 timerPromise = $timeout($scope.nextMul, $scope.duration);
             });
-            $('#heartBeat').trigger('pause');
+
             console.log('[MUL]Normal Timeup');
         };
 
@@ -126,7 +126,7 @@ angular.module('mean.multiply').controller('MultiplyController',
             $scope.stage = 'ans';
             /*global $:false */
             $('#mulTimer')[0].start();
-            $('#heartBeat').trigger('play');
+
             console.log('[MUL]Normal Next');
         };
 
@@ -154,6 +154,7 @@ angular.module('mean.multiply').controller('MultiplyController',
                 'num' : $scope.mulIter
             }));
             //$scope.$emit('set-phase', 'survey2');
+            $('#heartBeat').trigger('pause');
             console.log('[MUL]Go to TuoYe3');
             $scope.$emit('set-phase', 'tuoye3');
         };
